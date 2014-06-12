@@ -1,0 +1,13 @@
+127.0.0.1	localhost
+
+10.22.203.21	cloud-t1.datayes.com	cloud-t1
+10.22.203.22	cloud-t2.datayes.com	cloud-t2
+10.22.203.23	cloud-t3.datayes.com	cloud-t3
+10.22.203.24	cloud-t4.datayes.com	cloud-t4
+10.22.203.25	cloud-t5.datayes.com	cloud-t5
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

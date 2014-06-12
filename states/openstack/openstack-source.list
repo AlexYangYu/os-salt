@@ -1,0 +1,2 @@
+deb http://cloud-t1.datayes.com/ubuntu-cloud precise-proposed/icehouse main
+deb http://cloud-t1.datayes.com/ubuntu-cloud precise-updates/icehouse main
