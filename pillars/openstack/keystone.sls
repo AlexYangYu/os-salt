@@ -9,7 +9,7 @@ keystone:
     backend: dogpile.cache.memcached
     backend_argument: url:127.0.0.1
   catalog:
-    driver: keystone.catalog.backend.sql.Catalog
+    driver: keystone.catalog.backends.sql.Catalog
   credential:
     driver: keystone.credential.backends.sql.Credential
   database:

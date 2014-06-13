@@ -1,12 +1,14 @@
 #!/bin/bash
 
 echo "Create Keystone database"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ keystone.database.mysql_db }};" 
+mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ keystone.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ keystone.database.mysql_db }}.* TO '{{ keystone.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ keystone.database.mysql_pass }}';"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ keystone.database.mysql_db }}.* TO '{{ keystone.database.mysql_user }}'@'%' IDENTIFIED BY '{{ keystone.database.mysql_pass }}';"
 
 echo "Create Keystone database schema"
 keystone-manage db_sync
+
+service keystone restart
 
 echo "Result"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use keystone; show tables;"
@@ -18,7 +20,7 @@ echo "Create Admin tenant"
 keystone user-create --name={{ data.admin_user.name }} --pass={{ data.admin_user.passwd }} --email={{ data.admin_user.email }}
 keystone role-create --name=admin
 keystone tenant-create --name=admin --description="Admin Tenant"
-keystone user-role-add --user={{ data.admin_user.name }} --tenant=admin --role=admin
+keystone user-role-add --user={{ data.admin_user.name }} --role=admin --tenant=admin
 keystone user-role-add --user={{ data.admin_user.name }} --role=_member_ --tenant=admin
 
 echo "Create Service tenant"
@@ -28,6 +30,7 @@ echo "Create Endpoint"
 keystone service-create --name=keystone --type=identity --description="OpenStack Identity"
 
 keystone endpoint-create \
+--region={{ endpoints.region }} \
 --service-id=$(keystone service-list | awk '/ identity / {print $2}') \
 --publicurl={{ endpoints.keystone.public.protocol }}://{{ endpoints.keystone.public.host }}:{{ endpoints.keystone.public.port }}/{{ endpoints.keystone.public.version }} \
 --internalurl={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }} \
