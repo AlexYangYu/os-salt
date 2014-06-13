@@ -2,7 +2,7 @@
 
 echo "Create Glance database"
 rm -rf /var/lib/glance/glance.sqlite
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ glance.database.mysql_user }};" 
+mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ glance.database.mysql_user }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ glance.database.mysql_db }}.* TO '{{ glance.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ glance.database.mysql_pass }}';"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ glance.database.mysql_db }}.* TO '{{ glance.database.mysql_user }}'@'%' IDENTIFIED BY '{{ glance.database.mysql_pass }}';"
 
@@ -19,6 +19,7 @@ keystone user-create --name={{ data.glance_user.name }} --pass={{ data.glance_us
 keystone user-role-add --user={{ data.glance_user.name }} --role=admin --tenant={{ data.service.tenant }}
 keystone service-create --name=glance --type=image --description="OpenStack Image Service"
 keystone endpoint-create \
+--region={{ endpoints.region }} \
 --service-id=$(keystone service-list | awk '/ image / {print $2}') \
 --publicurl={{ endpoints.glance_api.public.protocol }}://{{ endpoints.glance_api.public.host }}:{{ endpoints.glance_api.public.port }} \
 --internalurl={{ endpoints.glance_api.admin.protocol }}://{{ endpoints.glance_api.admin.host }}:{{ endpoints.glance_api.admin.port }} \

@@ -1,4 +1,5 @@
 endpoints:
+  region: RegionOne
   keystone:
     public:
       protocol: http
