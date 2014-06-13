@@ -28,3 +28,5 @@ keystone-setup:
     - context:
       keystone: {{ pillar['keystone'] }}
       mysql: {{ pillar['mysql'] }}
+      data: {{ pillar['init-data'] }}
+      endpoints: {{ pillar['endpoints'] }}
