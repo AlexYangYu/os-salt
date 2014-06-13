@@ -18,7 +18,7 @@ echo "Create Admin tenant"
 keystone user-create --name={{ data.admin_user.name }} --pass={{ data.admin_user.passwd }} --email={{ data.admin_user.email }}
 keystone role-create --name=admin
 keystone tenant-create --name=admin --description="Admin Tenant"
-keystone user-role-add --user={{ data.admin_user.name }} --tenant=admin --role=admin
+keystone user-role-add --user={{ data.admin_user.name }} --role=admin --tenant=admin
 keystone user-role-add --user={{ data.admin_user.name }} --role=_member_ --tenant=admin
 
 echo "Create Service tenant"

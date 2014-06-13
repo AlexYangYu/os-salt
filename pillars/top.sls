@@ -4,6 +4,7 @@ base:
     - openstack.endpoints
   'cloud-t1.datayes.com':
     - openstack.init-data
+    - mysql
     - openstack.message-queue
     - openstack.keystone
-    - mysql
+    - openstack.glance
