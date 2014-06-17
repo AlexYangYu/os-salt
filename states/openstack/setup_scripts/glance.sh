@@ -10,7 +10,7 @@ echo "Create Glacne database schema"
 glance-manage db_sync
 
 echo "Resulte"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use glance; show tables;"
+mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ glance.database.mysql_db }}; show tables;"
 
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
