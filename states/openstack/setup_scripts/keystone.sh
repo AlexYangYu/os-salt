@@ -11,7 +11,7 @@ keystone-manage db_sync
 service keystone restart
 
 echo "Result"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use keystone; show tables;"
+mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ keystone.database.mysql_db }}; show tables;"
 
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
