@@ -12,3 +12,4 @@ neutron-conf:
       mq: {{ pillar['message-queue'] }}
       endpoints: {{ pillar['endpoints'] }}
       data: {{ pillar['init-data'] }}
+      nova: {{ pillar['nova-controller'] }}

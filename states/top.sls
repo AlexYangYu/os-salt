@@ -13,5 +13,7 @@ base:
     - openstack.neutron-controller
   'cloud-t2.datayes.com':
     - openstack.nova-compute
+    - openstack.neutron-network
   'cloud-t3.datayes.com':
     - openstack.nova-compute
+    - openstack.neutron-network

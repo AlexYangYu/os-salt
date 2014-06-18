@@ -49,3 +49,18 @@ neutron:
     securitygroup:
       enable_security_group: true
       firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+  l3:
+    interface_driver: neutron.agent.linux.interface.OVSInterfaceDriver
+    use_namespaces: true
+    external_network_bridge: br-ex
+    enable_multi_host: true
+  dhcp:
+    interface_driver: neutron.agent.linux.interface.OVSInterfaceDriver
+    use_namespaces: true
+    enable_multi_host: true
+    enable_isolated_metadata: false
+    dhcp_domain: datayes.com
+    dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
+  ovs:
+    tunnel_type: vxlan
+    enable_tunneling: true
