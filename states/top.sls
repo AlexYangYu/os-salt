@@ -10,6 +10,7 @@ base:
     - openstack.glance
     - openstack.clients
     - openstack.nova-controller
+    - openstack.neutron-controller
   'cloud-t2.datayes.com':
     - openstack.nova-compute
   'cloud-t3.datayes.com':

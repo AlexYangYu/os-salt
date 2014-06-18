@@ -3,6 +3,8 @@ nova-controller:
     verbose: true
     debug: true
     api_workers: 1
+    linuxnet_interface_driver: nova.network.linux_net.LinuxOVSInterfaceDriver
+    firewall_driver: nova.virt.firewall.NoopFirewallDriver
   database:
     mysql_user: nova
     mysql_pass: nova_pass
