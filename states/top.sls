@@ -12,6 +12,8 @@ base:
     - openstack.nova-controller
     - openstack.neutron-controller
     - openstack.dashboard
+    - openstack.cinder-controller
+    - openstack.cinder-volume
   'cloud-t2.datayes.com':
     - openstack.nova-compute
     - openstack.neutron-network

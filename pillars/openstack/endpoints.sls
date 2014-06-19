@@ -49,6 +49,28 @@ endpoints:
       host: cloud-t1.datayes.com
       port: 8774 
       version: v2
+  cinder_v1:
+    public:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8776 
+      version: v1
+    admin:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8776 
+      version: v1
+  cinder_v2:
+    public:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8774 
+      version: v2
+    admin:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8774 
+      version: v2
   novnc:
     host: 10.22.129.21
     port: 6080

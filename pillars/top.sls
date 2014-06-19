@@ -1,12 +1,13 @@
 base:
   '*':
     - address
+    - mysql
     - openstack.endpoints
     - openstack.init-data
-    - mysql
     - openstack.message-queue
     - openstack.keystone
     - openstack.glance
     - openstack.nova
     - openstack.neutron
     - openstack.dashboard
+    - openstack.cinder

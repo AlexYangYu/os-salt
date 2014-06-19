@@ -17,6 +17,10 @@ init-data:
     name: nova
     passwd: service_pass
     email: nova-admin@foo.com
+  cinder_user:
+    name: cinder
+    passwd: service_pass
+    email: cinder-admin@foo.com
   base_image:
     name: ubuntu-precise-amd64
     url: http://cloud-t1.datayes.com/images/ubuntu-precise-amd64-heat.qcow2
