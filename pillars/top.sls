@@ -8,3 +8,4 @@ base:
     - openstack.keystone
     - openstack.glance
     - openstack.nova
+    - openstack.neutron
