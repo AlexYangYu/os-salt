@@ -53,12 +53,12 @@ endpoints:
     public:
       protocol: http
       host: cloud-t1.datayes.com
-      port: 8774 
+      port: 8776 
       version: v1
     admin:
       protocol: http
       host: cloud-t1.datayes.com
-      port: 8774 
+      port: 8776 
       version: v1
   cinder_v2:
     public:

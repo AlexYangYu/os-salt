@@ -6,7 +6,7 @@ mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ cinder.database.mysql_db }}.* TO '{{ cinder.database.mysql_user }}'@'%' IDENTIFIED BY '{{ cinder.database.mysql_pass }}';"
 
 echo "Create Cinder database schema"
-cinder-manage db_sync
+cinder-manage db sync
 
 echo "Result"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ cinder.database.mysql_db }}; show tables;"
@@ -37,3 +37,12 @@ keystone endpoint-create \
 
 echo "Start Service"
 cd /etc/init.d/; ls cinder-* | xargs -i service {} restart; cd -
+
+echo "Verify Cinder"
+unset OS_SERVICE_TOKEN OS_SERVICE_ENDPOINT
+export OS_USERNAME={{ data.admin_user.name }}
+export OS_PASSWORD={{ data.admin_user.passwd }}
+export OS_TENANT_NAME=admin
+export OS_AUTH_URL={{ endpoints.keystone.public.protocol }}://{{ endpoints.keystone.public.host }}:{{ endpoints.keystone.public.port }}/{{ endpoints.keystone.public.version }}
+
+cinder create --display-name testVolume 1

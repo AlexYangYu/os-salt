@@ -3,6 +3,7 @@ cinder:
     verbose: true
     debug: true
     notification_driver: cinder.openstack.common.notifier.rpc_notifier
+    auth_strategy: keystone
   database:
     mysql_user: cinder 
     mysql_pass: cinder_pass

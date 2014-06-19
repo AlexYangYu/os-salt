@@ -19,7 +19,7 @@ cinder-setup:
     - mode: '0744'
     - template: jinja
     - context:
-      cinder:{{ pillar['cinder'] }}
+      cinder: {{ pillar['cinder'] }}
       keystone: {{ pillar['keystone'] }}
       mysql: {{ pillar['mysql'] }}
       data: {{ pillar['init-data'] }}
