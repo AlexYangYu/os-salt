@@ -9,3 +9,4 @@ base:
     - openstack.glance
     - openstack.nova
     - openstack.neutron
+    - openstack.dashboard
