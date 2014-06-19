@@ -15,7 +15,3 @@ base:
     - openstack.nova-compute
     - openstack.neutron-network
     - openstack.neutron-compute
-  'cloud-t3.datayes.com':
-    - openstack.nova-compute
-    - openstack.neutron-network
-    - openstack.neutron-compute

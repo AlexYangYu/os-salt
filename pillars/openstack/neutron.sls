@@ -54,6 +54,7 @@ neutron:
     use_namespaces: true
     external_network_bridge: br-ex
     enable_multi_host: true
+    metadata_port: 8775 
   dhcp:
     interface_driver: neutron.agent.linux.interface.OVSInterfaceDriver
     use_namespaces: true
