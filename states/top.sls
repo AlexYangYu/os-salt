@@ -11,6 +11,7 @@ base:
     - openstack.clients
     - openstack.nova-controller
     - openstack.neutron-controller
+    - openstack.dashboard
   'cloud-t2.datayes.com':
     - openstack.nova-compute
     - openstack.neutron-network
