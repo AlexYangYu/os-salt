@@ -11,3 +11,4 @@ base:
     - openstack.neutron
     - openstack.dashboard
     - openstack.cinder
+    - openstack.heat
