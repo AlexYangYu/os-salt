@@ -71,6 +71,28 @@ endpoints:
       host: cloud-t1.datayes.com
       port: 8774 
       version: v2
+  heat_api:
+    public:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8004
+      version: v1
+    admin:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8004 
+      version: v1
+  heat_cfn:
+    public:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8000
+      version: v1
+    admin:
+      protocol: http
+      host: cloud-t1.datayes.com
+      port: 8000 
+      version: v1
   novnc:
     host: 10.22.129.21
     port: 6080

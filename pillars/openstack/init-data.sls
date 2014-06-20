@@ -21,6 +21,10 @@ init-data:
     name: cinder
     passwd: service_pass
     email: cinder-admin@foo.com
+  heat_user:
+    name: heat 
+    passwd: heat_pass
+    email: heat-admin@foo.com
   base_image:
     name: ubuntu-precise-amd64
     url: http://cloud-t1.datayes.com/images/ubuntu-precise-amd64-heat.qcow2
