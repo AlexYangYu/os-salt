@@ -2,9 +2,11 @@ base:
   '*':
     - base.hosts
     - base.ntp
+    - base.mysql-client
     - openstack.repo
     - openstack.memcached
   'cloud-t1.datayes.com':
+    - base.mysql-server
     - openstack.message-queue
     - openstack.keystone
     - openstack.glance
