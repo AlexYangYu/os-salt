@@ -5,7 +5,7 @@ base:
     - base.mysql-client
     - openstack.repo
     - openstack.memcached
-  'cloud-t1.datayes.com':
+  'controller.novalocal':
     - base.mysql-server
     - openstack.message-queue
     - openstack.keystone
@@ -17,7 +17,7 @@ base:
     - openstack.cinder-controller
     - openstack.cinder-volume
     - openstack.heat
-  'cloud-t2.datayes.com':
+  'compute-[1-3].novalocal':
     - openstack.nova-compute
     - openstack.neutron-network
     - openstack.neutron-compute

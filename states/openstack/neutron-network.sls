@@ -12,6 +12,8 @@ neutron-network-packages:
       - neutron-lbaas-agent
       - neutron-metadata-agent
       - neutron-metering-agent
+    - require_in:
+      - file: /etc/neutron
 
 sysctl-conf:
   file.managed:

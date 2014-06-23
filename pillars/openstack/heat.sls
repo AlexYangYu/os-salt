@@ -8,7 +8,7 @@ heat:
   database:
     mysql_user: heat
     mysql_pass: heat_pass
-    mysql_host: cloud-t1.datayes.com
+    mysql_host: controller
     mysql_db: heat
     max_pool_size: 30
     max_retries: -1

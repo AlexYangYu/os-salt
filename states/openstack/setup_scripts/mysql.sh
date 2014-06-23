@@ -11,4 +11,6 @@ y
 y
 EOF
 
+sed -i 's/^bind-address\ \?=\ \?.*$/bind-address={{ mysql.bind_address }}/g' /etc/neutron/neutron.conf
+
 service mysql restart

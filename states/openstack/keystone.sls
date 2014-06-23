@@ -1,5 +1,7 @@
 keystone:
-  pkg.installed
+  pkg.installed:
+    - require_in:
+      - file: /etc/keystone
 
 keystone-conf:
   file.recurse:
@@ -9,8 +11,6 @@ keystone-conf:
     - group: keystone
     - dir_mode: '0700'
     - file_mode: '0644'
-    - require:
-       - pkg: keystone
     - template: jinja
     - context:
       keystone: {{ pillar['keystone'] }}

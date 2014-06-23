@@ -1,6 +1,6 @@
 message-queue:
   rabbit:
-    host: cloud-t1.datayes.com
+    host: controller 
     port: 5672
     user: guest
     passwd: guest

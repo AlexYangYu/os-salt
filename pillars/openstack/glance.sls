@@ -7,7 +7,7 @@ glance:
   database:
     mysql_user: glance
     mysql_pass: glance_pass
-    mysql_host: cloud-t1.datayes.com
+    mysql_host: controller
     mysql_db: glance
     max_pool_size: 30
     max_retries: -1

@@ -27,6 +27,6 @@ init-data:
     email: heat-admin@foo.com
   base_image:
     name: ubuntu-precise-amd64
-    url: http://cloud-t1.datayes.com/images/ubuntu-precise-amd64-heat.qcow2
+    url: http://10.22.129.21/images/ubuntu-precise-amd64-heat.qcow2
     format: qcow2
     container_format: bare

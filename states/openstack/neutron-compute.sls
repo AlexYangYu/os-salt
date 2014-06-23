@@ -8,3 +8,5 @@ neutron-compute-packages:
       - neutron-plugin-ml2
       - neutron-plugin-openvswitch-agent
       - openvswitch-datapath-dkms
+    - require_in:
+      - file: /etc/neutron

@@ -6,6 +6,8 @@ neutron-controller-packages:
     - pkgs:
       - neutron-server
       - neutron-plugin-ml2
+    - require_in:
+      - file: /etc/neutron
 
 neutron-setup:
   file.managed:

@@ -1,5 +1,7 @@
 glance:
-  pkg.installed
+  pkg.installed:
+    - require_in:
+      - file: /etc/glance
 
 glance-conf:
   file.recurse:

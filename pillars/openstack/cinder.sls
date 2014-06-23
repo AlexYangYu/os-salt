@@ -7,7 +7,7 @@ cinder:
   database:
     mysql_user: cinder 
     mysql_pass: cinder_pass
-    mysql_host: cloud-t1.datayes.com
+    mysql_host: controller
     mysql_db: cinder 
     max_pool_size: 30
     max_retries: -1

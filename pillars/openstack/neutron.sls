@@ -13,7 +13,7 @@ neutron:
   database:
     mysql_user: neutron 
     mysql_pass: neutron_pass
-    mysql_host: cloud-t1.datayes.com
+    mysql_host: controller
     mysql_db: neutron
     max_pool_size: 30
     max_retries: -1

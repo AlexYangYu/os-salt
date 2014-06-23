@@ -15,7 +15,7 @@ keystone:
   database:
     mysql_user: keystone
     mysql_pass: keystone_pass
-    mysql_host: cloud-t1.datayes.com
+    mysql_host: controller
     mysql_db: keystone
     max_pool_size: 30
     max_retries: -1

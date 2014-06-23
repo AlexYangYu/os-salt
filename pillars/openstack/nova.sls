@@ -8,7 +8,7 @@ nova-controller:
   database:
     mysql_user: nova
     mysql_pass: nova_pass
-    mysql_host: cloud-t1.datayes.com
+    mysql_host: controller
     mysql_db: nova
     max_pool_size: 30
     max_retries: -1
@@ -18,3 +18,6 @@ nova-controller:
   vnc:
     vncserver_listen: 0.0.0.0
     vncserver_proxyclient_address: 127.0.0.1
+  compute:
+    compute_driver: libvirt.LibvirtDriver
+    virt_type: qemu

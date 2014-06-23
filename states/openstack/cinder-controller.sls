@@ -8,6 +8,7 @@ cinder-controller-packages:
       - cinder-scheduler
     - require_in:
       - file: /opt/cloud.datayes.com/openstack/setup_scripts/cinder.sh
+      - file: /etc/cinder
 
 cinder-setup:
   file.managed:

@@ -4,7 +4,8 @@ include:
 nova-compute-packages:
   pkg.installed:
     - pkgs:
-      - nova-compute-kvm
+#      - nova-compute-kvm
+      - nova-compute-qemu
       - python-guestfs
     - require_in:
       - file: /etc/nova
