@@ -2,7 +2,8 @@ neutron:
   default:
     debug: true
     verbose: true
-    core_plugin: ml2
+    core_plugin: openvswitch
+    neutron_plugin_config: /etc/neutron/plugin.ini
     service_plugins: router
     auth_strategy: keystone
     allow_bulk: true
@@ -40,9 +41,11 @@ neutron:
   agent:
     report_interval: 5
   ml2:
-    type_drivers: vxlan
-    tenant_network_types: vxlan
+    type_drivers: gre 
+    tenant_network_types: gre 
     mechanism_drivers: openvswitch
+    gre:
+      tunnel_id_ranges: 1:10000
     vxlan:
       vni_ranges: 1:10000
       vxlan_group: 239.1.1.1
@@ -63,5 +66,18 @@ neutron:
     dhcp_domain: datayes.com
     dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
   ovs:
-    tunnel_type: vxlan
+    tunnel_type: gre 
     enable_tunneling: true
+    network_vlan_ranges: pyhsnet1
+    bridge_mappings: pyhsnet1:br-ex
+    tunnel_id_ranges: 2:65535
+    integration_bridge: br-int
+    tunnel_bridge: br-tun
+    int_peer_patch_port: patch-tun
+    tun_peer_patch_port: patch-int
+    l2_population: False
+    agent:
+      polling_interval: 2
+    securitygroup:
+      enable_security_group: true
+      firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver

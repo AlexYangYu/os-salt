@@ -11,4 +11,4 @@ y
 y
 EOF
 
-service mysql-server restart
+service mysql restart
