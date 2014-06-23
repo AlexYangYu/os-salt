@@ -22,3 +22,15 @@ neutron-setup:
       mysql: {{ pillar['mysql'] }}
       data: {{ pillar['init-data'] }}
       endpoints: {{ pillar['endpoints'] }}
+
+neutron-core-plugin-conf:
+  file.managed:
+    - name: /etc/default/neutron-server
+    - source: salt://openstack/etc/neutron/neutron-server
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: '0644'
+    - template: jinja
+    - context:
+      neutron: {{ pillar['neutron'] }}
