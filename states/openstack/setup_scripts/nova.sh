@@ -6,7 +6,7 @@ mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ nova.database.mysql_db }}.* TO '{{ nova.database.mysql_user }}'@'%' IDENTIFIED BY '{{ nova.database.mysql_pass }}';"
 
 echo "Create Nova database schema"
-nova-manange db sync
+nova-manage db sync
 
 echo "Result"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ nova.database.mysql_db }}; show tables;"
@@ -27,7 +27,13 @@ keystone endpoint-create \
 
 
 echo "Start Nova Services"
-cd /etc/init.d/; ls nova-* | xargs -i service {} restart; cd -
+service nova-api restart
+service nova-scheduler restart
+service nova-conductor restart
+service nova-cert restart
+service nova-consoleauth restart
+service nova-novncproxy restart
+sleep 5
 
 echo "Test Nova"
 unset OS_SERVICE_TOKEN OS_SERVICE_ENDPOINT

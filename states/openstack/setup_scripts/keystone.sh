@@ -9,6 +9,7 @@ echo "Create Keystone database schema"
 keystone-manage db_sync
 
 service keystone restart
+sleep 5
 
 echo "Result"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ keystone.database.mysql_db }}; show tables;"

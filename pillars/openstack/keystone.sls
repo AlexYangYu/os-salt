@@ -4,6 +4,8 @@ keystone:
     verbose: true
     admin_token: ADMIN 
     bind_host: 0.0.0.0
+    log_file: keystone.log
+    log_dir: /var/log/keystone
   cache:
     enabled: true
     backend: dogpile.cache.memcached

@@ -25,3 +25,6 @@ keystone endpoint-create \
 --publicurl={{ endpoints.neutron.public.protocol }}://{{ endpoints.neutron.public.host }}:{{ endpoints.neutron.public.port }} \
 --internalurl={{ endpoints.neutron.admin.protocol }}://{{ endpoints.neutron.admin.host }}:{{ endpoints.neutron.admin.port }} \
 --adminurl={{ endpoints.neutron.admin.protocol }}://{{ endpoints.neutron.admin.host }}:{{ endpoints.neutron.admin.port }}
+
+service neutron-server restart
+sleep 5

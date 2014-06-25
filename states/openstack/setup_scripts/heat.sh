@@ -39,3 +39,4 @@ keystone endpoint-create \
 service heat-api restart
 service heat-api-cfn restart
 service heat-engine restart
+sleep 5

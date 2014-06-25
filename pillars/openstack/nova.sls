@@ -16,8 +16,11 @@ nova-controller:
   neutron:
     metadata_proxy_shared_secret: 123456
   vnc:
-    vncserver_listen: 0.0.0.0
-    vncserver_proxyclient_address: 127.0.0.1
+    enabled: true
+    vncserver_listen: 0.0.0.0 
+    vncserver_proxyclient_address: 127.0.0.1 
+    novncproxy_host: 0.0.0.0
+    novncproxy_port: 6080
   compute:
     compute_driver: libvirt.LibvirtDriver
-    virt_type: qemu
+    virt_type: kvm 

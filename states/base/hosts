@@ -1,9 +1,10 @@
 127.0.0.1	localhost
 
-192.168.3.13	controller.novalocal    controller
-192.168.3.10	compute-1.novalocal    compute-1
-192.168.3.12	compute-2.novalocal    compute-2
-192.168.3.11	compute-3.novalocal    compute-3
+192.168.203.21	controller.iaas-datayes.com    controller
+192.168.203.22	compute-1.iaas-datayes.com    compute-1
+192.168.203.23	compute-2.iaas-datayes.com    compute-2
+192.168.203.24	compute-3.iaas-datayes.com    compute-3
+192.168.203.25	compute-4.iaas-datayes.com    compute-4
 
 ::1     ip6-localhost ip6-loopback
 fe00::0 ip6-localnet

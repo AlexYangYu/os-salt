@@ -36,7 +36,10 @@ keystone endpoint-create \
 --adminurl={{ endpoints.cinder_v1.admin.protocol }}://{{ endpoints.cinder_v1.admin.host }}:{{ endpoints.cinder_v1.admin.port }}/{{ endpoints.cinder_v1.public.version }}/%\(tenant_id\)s
 
 echo "Start Service"
-cd /etc/init.d/; ls cinder-* | xargs -i service {} restart; cd -
+service cinder-api restart
+service cinder-scheduler restart
+service cinder-volume restart
+sleep 5
 
 echo "Verify Cinder"
 unset OS_SERVICE_TOKEN OS_SERVICE_ENDPOINT

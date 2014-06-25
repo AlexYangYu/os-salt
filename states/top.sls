@@ -3,10 +3,10 @@ base:
     - base.hosts
     - base.ntp
     - base.mysql-client
-    - openstack.repo
     - openstack.memcached
-  'controller.novalocal':
+  'controller.iaas-datayes.com':
     - base.mysql-server
+    - openstack.tools
     - openstack.message-queue
     - openstack.keystone
     - openstack.glance
@@ -17,7 +17,7 @@ base:
     - openstack.cinder-controller
     - openstack.cinder-volume
     - openstack.heat
-  'compute-[1-3].novalocal':
+  'compute-[1-4].iaas-datayes.com':
     - openstack.nova-compute
     - openstack.neutron-network
     - openstack.neutron-compute

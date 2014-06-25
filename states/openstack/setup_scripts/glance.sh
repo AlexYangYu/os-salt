@@ -28,6 +28,7 @@ keystone endpoint-create \
 echo "Restart glance-* service"
 service glance-registry restart
 service glance-api restart
+sleep 5
 
 echo "Add Base Image"
 unset OS_SERVICE_TOKEN OS_SERVICE_ENDPOINT

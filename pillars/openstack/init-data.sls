@@ -26,7 +26,7 @@ init-data:
     passwd: heat_pass
     email: heat-admin@foo.com
   base_image:
-    name: ubuntu-precise-amd64
-    url: http://10.22.129.21/images/ubuntu-precise-amd64-heat.qcow2
+    name: cirros-0.3.2-x86_64
+    url: http://cdn.download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img
     format: qcow2
     container_format: bare
