@@ -2,6 +2,7 @@ heat:
   default:
     debug: true
     verbose: true
+    log_dir: /var/log/heat
     heat_stack_user_role: heat_stack_user
     num_engine_workers: 1
     notification_driver: heat.openstack.common.notifier.rpc_notifier
