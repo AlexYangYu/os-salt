@@ -4,6 +4,7 @@ base:
     - base.ntp
     - base.mysql-client
     - openstack.memcached
+    - zabbix.agent
   'controller.iaas-datayes.com':
     - base.mysql-server
     - openstack.tools
