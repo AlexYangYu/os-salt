@@ -12,3 +12,4 @@ base:
     - openstack.dashboard
     - openstack.cinder
     - openstack.heat
+    - zabbix
