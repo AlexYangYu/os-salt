@@ -7,6 +7,7 @@ base:
     - zabbix.agent
   'controller.iaas-datayes.com':
     - base.mysql-server
+    - zabbix.server
     - openstack.tools
     - openstack.message-queue
     - openstack.keystone

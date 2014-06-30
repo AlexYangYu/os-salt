@@ -13,7 +13,7 @@ zabbix-agent:
     - require:
       - pkg: zabbix-agent
   service.running:
-    - enable: True 
+    - enable: True
     - watch:
-      - pkg: zabbix-agent 
+      - pkg: zabbix-agent
       - file: zabbix-agent
