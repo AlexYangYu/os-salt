@@ -1,6 +1,5 @@
 base:
   '*':
-    - base.hosts
     - base.ntp
     - base.mysql-client
     - openstack.memcached
