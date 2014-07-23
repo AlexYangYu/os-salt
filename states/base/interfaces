@@ -1,0 +1,19 @@
+auto lo
+iface lo inet loopback
+
+auto em1
+iface em1 inet dhcp
+
+auto em2
+iface em2 inet dhcp
+
+auto p4p1
+iface p4p1 inet dhcp
+
+auto p4p2
+iface p4p2 inet manual
+	up ifconfig $IFACE 0.0.0.0 up
+	up ip link set $IFACE promisc on
+	post-up ethtool -K $IFACE tso off lro off gro off gso off
+	down ip link set $IFACE promisc off
+	down ifconfig $IFACE down

@@ -4,7 +4,8 @@ base:
     - base.mysql-client
     - openstack.memcached
     - zabbix.agent
-  'controller.iaas-datayes.com':
+  'os-ctl.wx-datayes.com':
+    - base.interfaces
     - base.mysql-server
     - zabbix.server
     - zabbix.web
@@ -19,7 +20,8 @@ base:
     - openstack.cinder-controller
     - openstack.cinder-volume
     - openstack.heat
-  'compute-[1-4].iaas-datayes.com':
+  'os-cp[1-3].ws-datayes.com':
+    - base.interfaces
     - openstack.nova-compute
     - openstack.neutron-network
     - openstack.neutron-compute
