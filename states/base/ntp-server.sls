@@ -1,6 +1,8 @@
 ntp:
-  pkg.installed
-  file.managed:
+  pkg:
+    - installed
+  file:
+    - managed
     - name: /etc/ntp.conf
     - source: salt://base/ntp.conf
     - user: root
@@ -9,7 +11,8 @@ ntp:
     - template: jinja
     - context:
       ntp: {{ pillar['ntp'] }}
-  service.running:
+  service:
+    - running
     - require:
       - file: ntp
       - pkg: ntp 

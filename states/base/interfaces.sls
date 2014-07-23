@@ -1,6 +1,6 @@
 /etc/network/interfaces:
   file:
-    - managed:
+    - managed
     - source: salt://base/interfaces
     - user: root
     - group: root
