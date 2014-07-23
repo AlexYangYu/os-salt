@@ -1,5 +1,6 @@
 base:
   '*':
+    - base.source-list
     - base.mysql-client
     - openstack.memcached
     - zabbix.agent
