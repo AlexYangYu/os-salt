@@ -1,6 +1,6 @@
 base:
   '*':
-    - address
+    - ntp
     - mysql
     - openstack.endpoints
     - openstack.init-data

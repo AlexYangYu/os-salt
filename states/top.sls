@@ -1,11 +1,13 @@
 base:
   '*':
-    - base.ntp
     - base.mysql-client
     - openstack.memcached
     - zabbix.agent
+  'controller.wx-datayes.com':
+    - base.ntp-server
   'os-ctl.wx-datayes.com':
     - base.interfaces
+    - base.ntp-client
     - base.mysql-server
     - zabbix.server
     - zabbix.web
@@ -22,6 +24,7 @@ base:
     - openstack.heat
   'os-cp[1-3].ws-datayes.com':
     - base.interfaces
+    - base.ntp-client
     - openstack.nova-compute
     - openstack.neutron-network
     - openstack.neutron-compute
