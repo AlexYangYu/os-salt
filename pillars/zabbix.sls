@@ -1,6 +1,6 @@
 zabbix:
   agent:
-    server: 10.22.203.21
+    server: zbx-server 
   server:
     listen_ip: 0.0.0.0
     listen_port: 10051

@@ -23,9 +23,8 @@ base:
     - openstack.cinder-controller
     - openstack.cinder-volume
     - openstack.heat
-  'os-cp[1-3].ws-datayes.com':
+  'os-cp[1-3].wx-datayes.com':
     - base.interfaces
     - base.ntp-client
     - openstack.nova-compute
     - openstack.neutron-network
-    - openstack.neutron-compute

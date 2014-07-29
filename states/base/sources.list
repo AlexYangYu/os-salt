@@ -1,5 +1,5 @@
-deb http://controller.wx-datayes.com/ubuntu trusty main restricted universe multiverse
-deb http://controller.wx-datayes.com/ubuntu trusty-updates main restricted universe multiverse
-deb http://controller.wx-datayes.com/ubuntu trusty-backports main restricted universe multiverse
-deb http://controller.wx-datayes.com/ubuntu trusty-security main restricted universe multiverse
-deb http://controller.wx-datayes.com/ceph trusty main
+deb http://{{ apt_source }}/ubuntu trusty main restricted universe multiverse
+deb http://{{ apt_source }}/ubuntu trusty-updates main restricted universe multiverse
+deb http://{{ apt_source }}/ubuntu trusty-backports main restricted universe multiverse
+deb http://{{ apt_source }}/ubuntu trusty-security main restricted universe multiverse
+#deb http://{{ apt_source }}/ceph trusty main

@@ -9,7 +9,7 @@ heat:
   database:
     mysql_user: heat
     mysql_pass: heat_pass
-    mysql_host: controller
+    mysql_host: mysql-server 
     mysql_db: heat
     max_pool_size: 30
     max_retries: -1

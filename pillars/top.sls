@@ -2,6 +2,7 @@ base:
   '*':
     - ntp
     - mysql
+    - source
     - openstack.endpoints
     - openstack.init-data
     - openstack.message-queue

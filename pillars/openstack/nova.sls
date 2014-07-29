@@ -2,13 +2,13 @@ nova-controller:
   default:
     verbose: true
     debug: true
-    api_workers: 1
+    api_workers: 8
     linuxnet_interface_driver: nova.network.linux_net.LinuxOVSInterfaceDriver
     firewall_driver: nova.virt.firewall.NoopFirewallDriver
   database:
     mysql_user: nova
     mysql_pass: nova_pass
-    mysql_host: controller
+    mysql_host: mysql-server 
     mysql_db: nova
     max_pool_size: 30
     max_retries: -1
