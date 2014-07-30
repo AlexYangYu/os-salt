@@ -18,7 +18,7 @@ base:
     - openstack.glance
     - openstack.clients
     - openstack.nova-controller
-    - openstack.neutron-controller
+    - openstack.neutron.api
     - openstack.dashboard
     - openstack.cinder-controller
     - openstack.cinder-volume
@@ -28,4 +28,7 @@ base:
     - base.interfaces
     - base.ntp-client
     - openstack.nova-compute
-    - openstack.neutron-network
+    - openstack.neutron.ovs
+    - openstack.neutron.l3
+    - openstack.neutron.dhcp
+    - openstack.neutron.metadata

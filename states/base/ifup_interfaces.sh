@@ -8,7 +8,7 @@ then
 fi
 
 # set up the default router
-if [ '{{ network.default_route }}' = $(ip r | grep default | awk '{ print $3 }') ]
+if [ '{{ network.default_route }}' != $(ip r | grep default | awk '{ print $3 }') ]
 then
     ip route del default
     ip route add default via {{ network.default_route }} dev {{ network.default_interface }}
