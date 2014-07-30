@@ -14,3 +14,4 @@ base:
     - openstack.cinder
     - openstack.heat
     - zabbix
+    - network

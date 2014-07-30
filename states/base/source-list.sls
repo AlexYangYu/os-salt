@@ -8,3 +8,5 @@ apt-source:
     - template: jinja
     - defaults:
       apt_source: {{ pillar['source']['apt_source'] }}
+    - require:
+      - cmd: ifup_interfaces
