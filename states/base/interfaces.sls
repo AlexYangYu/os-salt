@@ -21,6 +21,6 @@
 ifup_interfaces:
   cmd.run:
     - name: /bin/bash /opt/cloud.datayes.com/openstack/setup_scripts/ifup_interfaces.sh
-  require:
-    - file: /etc/network/interfaces
-    - file: /opt/cloud.datayes.com/openstack/ifup_interfaces.sh
+    - require:
+      - file: /etc/network/interfaces
+      - file: /opt/cloud.datayes.com/openstack/setup_scripts/ifup_interfaces.sh

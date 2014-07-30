@@ -8,6 +8,8 @@ neutron-api-packages:
       - neutron-plugin-ml2
     - require_in:
       - file: neutron-conf
+    - require:
+      - cmd: update-apt-index
   service.dead:
     - name: neutron-server
     - enable: True

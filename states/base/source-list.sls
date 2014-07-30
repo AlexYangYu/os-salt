@@ -10,3 +10,15 @@ apt-source:
       apt_source: {{ pillar['source']['apt_source'] }}
     - require:
       - cmd: ifup_interfaces
+
+disable-i386-arch:
+  cmd.run:
+    - name: dpkg --remove-architecture i386
+    - require:
+      - file: apt-source
+
+update-apt-index:
+  cmd.run:
+    - name: apt-get update
+    - require:
+      - cmd: disable-i386-arch

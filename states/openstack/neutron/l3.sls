@@ -6,11 +6,14 @@ neutron-l3:
     - name: neutron-l3-agent
     - require_in:
       - file: neutron-conf
+    - require:
+      - cmd: update-apt-index
   service.running:
     - name: neutron-l3-agent
     - enable: True
     - require:
       - pkg: neutron-l3
+    - watch:
       - file: neutron-conf
 
 sysctl-conf:

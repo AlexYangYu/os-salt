@@ -9,7 +9,7 @@ nova-compute:
     - require_in:
       - file: /etc/nova
     - require:
-      - file: apt-source
+      - cmd: update-apt-index
   service.running:
     - enable: True
     - watch:

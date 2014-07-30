@@ -20,6 +20,7 @@ neutron-ovs:
       - openvswitch-datapath-dkms
     - require_in:
       - file: neutron-conf
+      - cmd: update-apt-index
   cmd.run:
     - name: /bin/bash /opt/cloud.datayes.com/openstack/setup_scripts/neutron_ovs.sh
     - require:
@@ -30,4 +31,5 @@ neutron-ovs:
     - require:
       - pkg: neutron-ovs 
       - cmd: neutron-ovs
+    - watch:
       - file: neutron-conf
