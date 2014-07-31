@@ -7,7 +7,7 @@ glance:
   database:
     mysql_user: glance
     mysql_pass: glance_pass
-    mysql_host: controller
+    mysql_host: mysql-server
     mysql_db: glance
     max_pool_size: 30
     max_retries: -1

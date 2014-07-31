@@ -5,9 +5,6 @@ mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ n
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ neutron.database.mysql_db }}.* TO '{{ neutron.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ neutron.database.mysql_pass }}';"
 mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ neutron.database.mysql_db }}.* TO '{{ neutron.database.mysql_user }}'@'%' IDENTIFIED BY '{{ neutron.database.mysql_pass }}';"
 
-echo "Result"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ neutron.database.mysql_db }}; show tables;"
-
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
 

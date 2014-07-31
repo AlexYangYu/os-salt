@@ -2,8 +2,8 @@ neutron:
   default:
     debug: true
     verbose: true
-    core_plugin: openvswitch
-    neutron_plugin_config: /etc/neutron/plugin.ini
+    core_plugin: ml2 
+    neutron_plugin_config: /etc/neutron/plugins/ml2/ml2_conf.ini
     service_plugins: router
     auth_strategy: keystone
     allow_bulk: true
@@ -13,7 +13,7 @@ neutron:
   database:
     mysql_user: neutron 
     mysql_pass: neutron_pass
-    mysql_host: controller
+    mysql_host: mysql-server 
     mysql_db: neutron
     max_pool_size: 30
     max_retries: -1
@@ -41,13 +41,13 @@ neutron:
   agent:
     report_interval: 5
   ml2:
-    type_drivers: gre 
-    tenant_network_types: gre 
-    mechanism_drivers: openvswitch
+    type_drivers: vxlan 
+    tenant_network_types: vxlan 
+    mechanism_drivers: openvswitch,l2population
     gre:
       tunnel_id_ranges: 1:10000
     vxlan:
-      vni_ranges: 1:10000
+      vni_ranges: 500:10000
       vxlan_group: 239.1.1.1
     securitygroup:
       enable_security_group: true
@@ -65,19 +65,21 @@ neutron:
     enable_isolated_metadata: false
     dhcp_domain: datayes.com
     dhcp_driver: neutron.agent.linux.dhcp.Dnsmasq
+    dnsmasq_config_file: /etc/neutron/dnsmasq.conf
   ovs:
-    tunnel_type: gre 
+    tunnel_type: vxlan 
     enable_tunneling: true
     network_vlan_ranges: pyhsnet1
     bridge_mappings: pyhsnet1:br-ex
-    tunnel_id_ranges: 2:65535
+    tunnel_id_ranges: 500:10000
     integration_bridge: br-int
     tunnel_bridge: br-tun
     int_peer_patch_port: patch-tun
     tun_peer_patch_port: patch-int
-    l2_population: False
     agent:
       polling_interval: 2
+      l2_population: true 
+      tunnel_types: vxlan
     securitygroup:
       enable_security_group: true
       firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver

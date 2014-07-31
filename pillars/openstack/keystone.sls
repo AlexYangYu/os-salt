@@ -17,7 +17,7 @@ keystone:
   database:
     mysql_user: keystone
     mysql_pass: keystone_pass
-    mysql_host: controller
+    mysql_host: mysql-server 
     mysql_db: keystone
     max_pool_size: 30
     max_retries: -1

@@ -1,6 +1,6 @@
 message-queue:
   rabbit:
-    host: controller 
+    host: mq-server 
     port: 5672
     user: guest
     passwd: guest

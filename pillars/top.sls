@@ -1,7 +1,8 @@
 base:
   '*':
-    - address
+    - ntp
     - mysql
+    - source
     - openstack.endpoints
     - openstack.init-data
     - openstack.message-queue
@@ -13,3 +14,4 @@ base:
     - openstack.cinder
     - openstack.heat
     - zabbix
+    - network
