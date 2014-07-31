@@ -19,6 +19,12 @@ nova-compute:
       - cmd.run: kernel-patch
 
 kernel-patch:
+  file.managed:
+    - name: /etc/kernel/postinst.d/statoverride
+    - source: salt://openstack/etc/statoverride
+    - user: root
+    - group: root
+    - mode: '0755' 
   cmd.run:
     - name: dpkg-statoverride --update --add root root 0644 /boot/vmlinuz-$(uname -r)
-    - onlyif: test '-rw-r--r--' -eq $(ls -l /boot/vmlinuz-$(uname -r) | awk '{print $1}')
+    - onlyif: test '-rw-r--r--' != $(ls -l /boot/vmlinuz-$(uname -r) | awk '{print $1}')
