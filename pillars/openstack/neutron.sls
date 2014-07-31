@@ -4,7 +4,7 @@ neutron:
     verbose: true
     core_plugin: ml2 
     neutron_plugin_config: /etc/neutron/plugins/ml2/ml2_conf.ini
-    service_plugins: router
+    service_plugins: router,lbaas
     auth_strategy: keystone
     allow_bulk: true
     allow_overlapping_ips: true
@@ -83,3 +83,13 @@ neutron:
     securitygroup:
       enable_security_group: true
       firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+  lbaas:
+    debug: True
+    periodic_interval: 10
+    interface_driver: neutron.agent.linux.interface.OVSInterfaceDriver
+    ovs_use_veth: false
+    device_driver: neutron.services.loadbalancer.drivers.haproxy.namespace_driver.HaproxyNSDriver
+    haproxy:
+      loadbalancer_state_path: $state_path/lbaas
+      user_group: nogroup
+      send_gratuitous_arp: 3

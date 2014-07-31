@@ -32,3 +32,4 @@ base:
     - openstack.neutron.l3
     - openstack.neutron.dhcp
     - openstack.neutron.metadata
+    - openstack.neutron.lbaas
