@@ -22,7 +22,9 @@ base:
     - openstack.dashboard
     - openstack.cinder-controller
     - openstack.cinder-volume
-    - openstack.heat
+    - openstack.heat.api
+    - openstack.heat.api-cfn
+    - openstack.heat.engine
   'os-cp[1-3].wx-datayes.com':
     - base.source-list
     - base.interfaces

@@ -10,7 +10,7 @@ neutron-api-packages:
       - file: neutron-conf
     - require:
       - cmd: update-apt-index
-  service.dead:
+  service.running:
     - name: neutron-server
     - enable: True
 
