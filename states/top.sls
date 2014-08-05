@@ -13,10 +13,11 @@ base:
     - zabbix.server
     - zabbix.web
     - openstack.tools
+    - openstack.clients
     - openstack.message-queue
     - openstack.keystone.api
-    - openstack.glance
-    - openstack.clients
+    - openstack.glance.api
+    - openstack.glance.registry
     - openstack.nova-controller
     - openstack.neutron.api
     - openstack.dashboard

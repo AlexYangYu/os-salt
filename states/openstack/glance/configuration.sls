@@ -1,18 +1,11 @@
-glance:
-  pkg.installed:
-    - require_in:
-      - file: /etc/glance
-
 glance-conf:
   file.recurse:
     - name: /etc/glance
-    - source: salt://openstack/etc/glance
+    - source: salt://openstack/glance/etc/glance
     - user: glance
     - group: glance
     - dir_mode: '0700'
     - file_mode: '0644'
-    - require:
-       - pkg: glance
     - template: jinja
     - context:
       glance: {{ pillar['glance'] }}
@@ -23,7 +16,7 @@ glance-conf:
 glance-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/openstack/setup_scripts/glance.sh
-    - source: salt://openstack/setup_scripts/glance.sh
+    - source: salt://openstack/glance/setup/glance.sh
     - makedirs: True
     - user: root
     - group: root
