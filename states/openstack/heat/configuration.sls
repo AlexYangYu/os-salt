@@ -1,16 +1,7 @@
-heat-packages:
-  pkg.installed:
-    - pkgs:
-      - heat-api
-      - heat-api-cfn
-      - heat-engine
-    - require_in:
-      - file: /etc/heat
-
 heat-configuration:
   file.recurse:
     - name: /etc/heat
-    - source: salt://openstack/etc/heat
+    - source: salt://openstack/heat/etc/heat
     - user: heat
     - group: heat
     - dir_mode: '0700'
@@ -26,7 +17,7 @@ heat-configuration:
 heat-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/openstack/setup_scripts/heat.sh
-    - source: salt://openstack/setup_scripts/heat.sh
+    - source: salt://openstack/heat/setup/heat.sh
     - makedirs: True
     - user: root
     - group: root
