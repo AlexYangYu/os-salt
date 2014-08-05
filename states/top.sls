@@ -1,6 +1,6 @@
 base:
   '*':
-    - base.mysql-client
+    - mysql.client
     - openstack.memcached
     - zabbix.agent
   'controller.wx-datayes.com':
@@ -9,12 +9,12 @@ base:
     - base.source-list
     - base.interfaces
     - base.ntp-client
-    - base.mysql-server
+    - mysql.server
     - zabbix.server
     - zabbix.web
     - openstack.tools
     - openstack.clients
-    - openstack.message-queue
+    - openstack.message-queue.rabbit
     - openstack.keystone.api
     - openstack.glance.api
     - openstack.glance.registry

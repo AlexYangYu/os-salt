@@ -1,5 +1,5 @@
-memcached:
-  pkg.installed
-
-python-memcache:
-  pkg.installed
+memcache:
+  pkg.installed:
+    - pkgs:
+      - memcached
+      - python-memcache

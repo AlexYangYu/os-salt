@@ -1,7 +1,7 @@
-import:
+include:
   - openstack.dashboard.configuration
 
-dashboard-packages:
+apache-dashboard:
   pkg.installed:
     - pkgs:
       - apache2
