@@ -25,7 +25,7 @@ base:
     - openstack.nova.novncproxy
     - openstack.nova.scheduler
     - openstack.neutron.api
-    - openstack.dashboard
+    - openstack.dashboard.apache-dashboard
     - openstack.cinder.api
     - openstack.cinder.scheduler
     - openstack.cinder.volume

@@ -17,7 +17,7 @@ neutron-api-packages:
 neutron-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/openstack/setup_scripts/neutron.sh
-    - source: salt://openstack/setup_scripts/neutron.sh
+    - source: salt://openstack/neutron/setup/neutron.sh
     - makedirs: True
     - user: root
     - group: root
