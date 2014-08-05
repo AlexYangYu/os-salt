@@ -1,7 +1,7 @@
 nova-conf:
   file.recurse:
     - name: /etc/nova
-    - source: salt://openstack/etc/nova
+    - source: salt://openstack/nova/etc/nova
     - user: nova 
     - group: nova 
     - dir_mode: '0700'
@@ -16,7 +16,7 @@ nova-conf:
 nova-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/openstack/setup_scripts/nova.sh
-    - source: salt://openstack/setup_scripts/nova.sh
+    - source: salt://openstack/nova/setup/nova.sh
     - makedirs: True
     - user: root
     - group: root
