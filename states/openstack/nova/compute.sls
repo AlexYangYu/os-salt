@@ -1,5 +1,5 @@
 include:
-  - openstack.nova-configuration
+  - openstack.nova.configuration
 
 nova-compute:
   pkg.installed:
@@ -21,7 +21,7 @@ nova-compute:
 kernel-patch:
   file.managed:
     - name: /etc/kernel/postinst.d/statoverride
-    - source: salt://openstack/etc/statoverride
+    - source: salt://openstack/nova/etc/statoverride
     - user: root
     - group: root
     - mode: '0755' 

@@ -18,7 +18,12 @@ base:
     - openstack.keystone.api
     - openstack.glance.api
     - openstack.glance.registry
-    - openstack.nova-controller
+    - openstack.nova.api
+    - openstack.nova.cert
+    - openstack.nova.conductor
+    - openstack.nova.consoleauth
+    - openstack.nova.novncproxy
+    - openstack.nova.scheduler
     - openstack.neutron.api
     - openstack.dashboard
     - openstack.cinder-controller
@@ -30,7 +35,7 @@ base:
     - base.source-list
     - base.interfaces
     - base.ntp-client
-    - openstack.nova-compute
+    - openstack.nova.compute
     - openstack.neutron.ovs
     - openstack.neutron.l3
     - openstack.neutron.dhcp
