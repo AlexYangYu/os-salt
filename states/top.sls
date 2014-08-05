@@ -26,8 +26,9 @@ base:
     - openstack.nova.scheduler
     - openstack.neutron.api
     - openstack.dashboard
-    - openstack.cinder-controller
-    - openstack.cinder-volume
+    - openstack.cinder.api
+    - openstack.cinder.scheduler
+    - openstack.cinder.volume
     - openstack.heat.api
     - openstack.heat.api-cfn
     - openstack.heat.engine
