@@ -1,12 +1,7 @@
-keystone:
-  pkg.installed:
-    - require_in:
-      - file: /etc/keystone
-
 keystone-conf:
   file.recurse:
     - name: /etc/keystone
-    - source: salt://openstack/etc/keystone
+    - source: salt://openstack/keystone/etc/keystone
     - user: keystone
     - group: keystone
     - dir_mode: '0700'
@@ -19,7 +14,7 @@ keystone-conf:
 keystone-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/openstack/setup_scripts/keystone.sh
-    - source: salt://openstack/setup_scripts/keystone.sh
+    - source: salt://openstack/keystone/setup/keystone.sh
     - makedirs: True
     - user: root
     - group: root

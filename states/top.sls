@@ -14,7 +14,7 @@ base:
     - zabbix.web
     - openstack.tools
     - openstack.message-queue
-    - openstack.keystone
+    - openstack.keystone.api
     - openstack.glance
     - openstack.clients
     - openstack.nova-controller
