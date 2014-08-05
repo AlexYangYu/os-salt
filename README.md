@@ -1,17 +1,17 @@
-#os-salt
+# os-salt
 
-This project is aimed to deploy OpenStack with StaltStack. 
+This project is aimed to deploy a production-ready OpenStack with StaltStack. 
 
-#Roadmap
+# TODO LIST
 
  - <del>Nova</del>
  - <del>Neutron</del>
  - <del>Horizon</del>
  - <del>Cinder<del>
  - <del>Heat</del>
- - Zabbix
+ - <del>Zabbix</del>
  - LogStash
- - LBaaS
+ - <del>LBaaS</del>
  - DNSaaS
  - VPNaaS
  - Ceph RBD
@@ -22,13 +22,7 @@ This project is aimed to deploy OpenStack with StaltStack.
  - Ceilometer
  - Trove
 
-#Todo list
-
- - Add Zabbix States 
- - Add a ini config tool to replace the sed command.
- - Refactor the setup scripts and add helper scripts.
-
-#Howtos
+# Howtos
 
 comming soon.
 
