@@ -13,7 +13,7 @@ keystone-conf:
 
 keystone-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/keystone.sh
+    - name: /opt/cloud.datayes.com/openstack/keystone.sh
     - source: salt://openstack/keystone/setup/keystone.sh
     - makedirs: True
     - user: root

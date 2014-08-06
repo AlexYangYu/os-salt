@@ -15,7 +15,7 @@ nova-conf:
 
 nova-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/nova.sh
+    - name: /opt/cloud.datayes.com/openstack/nova.sh
     - source: salt://openstack/nova/setup/nova.sh
     - makedirs: True
     - user: root

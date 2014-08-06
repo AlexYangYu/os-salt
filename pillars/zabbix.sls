@@ -10,3 +10,6 @@ zabbix:
     db_name: zabbix
     db_user: zabbix
     db_pass: zabbix_pass
+  web:
+    port: 8110
+    dir: /usr/share/zabbix

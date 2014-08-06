@@ -15,7 +15,7 @@ glance-conf:
 
 glance-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/glance.sh
+    - name: /opt/cloud.datayes.com/openstack/glance.sh
     - source: salt://openstack/glance/setup/glance.sh
     - makedirs: True
     - user: root

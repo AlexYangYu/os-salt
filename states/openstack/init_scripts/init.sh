@@ -3,13 +3,13 @@
 set -o nounset
 set -e
 
-function init() {
-    echo "Initialize $1"
-    if [ -f $1 ]
-    then
-        source $1
-    fi
-}
+if [ -f ../init_func.sh ]
+then
+    source ../init_func.sh
+else
+    echo "ERROR, Need init_func.sh"
+    exit 1
+fi
 
 init mysql.sh
 init rabbitmq.sh

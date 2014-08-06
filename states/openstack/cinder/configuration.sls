@@ -16,7 +16,7 @@ cinder-conf:
 
 cinder-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/cinder.sh
+    - name: /opt/cloud.datayes.com/openstack/cinder.sh
     - source: salt://openstack/cinder/setup/cinder.sh
     - makedirs: True
     - user: root

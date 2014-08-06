@@ -7,7 +7,7 @@
     - template: jinja
       network: {{ pillar['network'] }}
 
-/opt/cloud.datayes.com/openstack/setup_scripts/ifup_interfaces.sh:
+/opt/cloud.datayes.com/openstack/ifup_interfaces.sh:
   file.managed:
     - source: salt://base/ifup_interfaces.sh
     - makedirs: True
@@ -20,7 +20,7 @@
 
 ifup_interfaces:
   cmd.run:
-    - name: /bin/bash /opt/cloud.datayes.com/openstack/setup_scripts/ifup_interfaces.sh
+    - name: /bin/bash /opt/cloud.datayes.com/openstack/ifup_interfaces.sh
     - require:
       - file: /etc/network/interfaces
-      - file: /opt/cloud.datayes.com/openstack/setup_scripts/ifup_interfaces.sh
+      - file: /opt/cloud.datayes.com/openstack/ifup_interfaces.sh

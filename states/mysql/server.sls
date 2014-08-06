@@ -4,7 +4,7 @@ mysql-server-packages:
 
 mysql-server-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/mysql.sh
+    - name: /opt/cloud.datayes.com/mysql/mysql.sh
     - source: salt://mysql/setup/mysql.sh
     - makedirs: True
     - user: root

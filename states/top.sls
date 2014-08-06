@@ -6,13 +6,16 @@ base:
   'controller.wx-datayes.com':
     - base.ntp-server
   'os-ctl.wx-datayes.com':
+    - init-all
     - base.source-list
     - base.interfaces
     - base.ntp-client
+    - mysql.init-mysql
     - mysql.server
+    - zabbix.init-zabbix
     - zabbix.server
     - zabbix.web
-    - openstack.tools
+    - openstack.init-openstack
     - openstack.clients
     - openstack.message-queue.rabbit
     - openstack.keystone.api

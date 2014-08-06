@@ -29,7 +29,7 @@ zabbix-server:
 zabbix-server-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/zabbix/setup_server.sh
-    - source: salt://zabbix/scripts/setup_server.sh
+    - source: salt://zabbix/setup/setup_server.sh
     - user: root
     - group: root
     - mode: '0744'

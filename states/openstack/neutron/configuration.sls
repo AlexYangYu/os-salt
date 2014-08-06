@@ -13,3 +13,19 @@ neutron-conf:
       endpoints: {{ pillar['endpoints'] }}
       data: {{ pillar['init-data'] }}
       nova: {{ pillar['nova-controller'] }}
+
+neutron-setup:
+  file.managed:
+    - name: /opt/cloud.datayes.com/openstack/neutron.sh
+    - source: salt://openstack/neutron/setup/neutron.sh
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: '0744'
+    - template: jinja
+    - context:
+      neutron: {{ pillar['neutron'] }}
+      keystone: {{ pillar['keystone'] }}
+      mysql: {{ pillar['mysql'] }}
+      data: {{ pillar['init-data'] }}
+      endpoints: {{ pillar['endpoints'] }}

@@ -16,7 +16,7 @@ heat-configuration:
 
 heat-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/heat.sh
+    - name: /opt/cloud.datayes.com/openstack/heat.sh
     - source: salt://openstack/heat/setup/heat.sh
     - makedirs: True
     - user: root

@@ -20,11 +20,22 @@ zabbix-web:
       db_host: {{ pillar['zabbix']['server']['db_host'] }}
     - require:
       - pkg: zabbix-web
- 
+
+zabbix-web-apache-conf:
+  file.managed:
+    - name: /etc/apache2/sites-enabled/zabbix-web.conf
+    - source: salt://zabbix/etc/zabbix-web.conf
+    - user: root
+    - group: root
+    - mode: '0644'
+    - template: jinja
+    - context:
+      zabbix: {{ pillar['zabbix'] }}
+
 zabbix-web-setup:
   file.managed:
     - name: /opt/cloud.datayes.com/zabbix/setup_web.sh
-    - source: salt://zabbix/scripts/setup_web.sh 
+    - source: salt://zabbix/setup/setup_web.sh 
     - user: root
     - group: root
     - mode: '0744'
