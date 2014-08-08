@@ -10,6 +10,7 @@ mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES
 
 echo "Create Keystone database schema"
 keystone-manage db_sync
+chown -R keystone:keystone /var/log/keystone
 
 service keystone restart
 sleep 5

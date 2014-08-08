@@ -29,3 +29,12 @@ cinder-setup:
       mysql: {{ pillar['mysql'] }}
       data: {{ pillar['init-data'] }}
       endpoints: {{ pillar['endpoints'] }}
+
+cinder-volume-setup:
+  file.managed:
+    - name: /opt/cloud.datayes.com/openstack/cinder_volume.sh
+    - source: salt://openstack/cinder/setup/cinder_volume.sh
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: '0744'

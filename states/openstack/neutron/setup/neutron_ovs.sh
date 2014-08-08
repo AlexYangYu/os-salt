@@ -18,5 +18,6 @@ fi
 ovs-ofctl show {{ neutron.l3.external_network_bridge }}| grep {{ network.ext_interface }}
 if [ 0 -ne $? ]
 then
+    ifup {{ network.ext_interface }}
     ovs-vsctl add-port {{ neutron.l3.external_network_bridge }} {{ network.ext_interface }}
 fi

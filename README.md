@@ -10,10 +10,10 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
  - <del>Cinder<del>
  - <del>Heat</del>
  - <del>Zabbix</del>
- - LogStash
  - <del>LBaaS</del>
  - DNSaaS
  - VPNaaS
+ - LogStash
  - Ceph RBD
  - Ceph RADOSGW
  - MySQL HA
@@ -25,5 +25,3 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
 # Howtos
 
 comming soon.
-
-

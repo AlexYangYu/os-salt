@@ -1,4 +1,4 @@
-nova-controller:
+nova:
   default:
     verbose: true
     debug: true

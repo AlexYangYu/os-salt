@@ -8,7 +8,7 @@ nova-conf:
     - file_mode: '0644'
     - template: jinja
     - context:
-      nova: {{ pillar['nova-controller'] }}
+      nova: {{ pillar['nova'] }}
       mq: {{ pillar['message-queue'] }}
       endpoints: {{ pillar['endpoints'] }}
       data: {{ pillar['init-data'] }}
@@ -23,7 +23,7 @@ nova-setup:
     - mode: '0744'
     - template: jinja
     - context:
-      nova: {{ pillar['nova-controller'] }}
+      nova: {{ pillar['nova'] }}
       keystone: {{ pillar['keystone'] }}
       mysql: {{ pillar['mysql'] }}
       data: {{ pillar['init-data'] }}

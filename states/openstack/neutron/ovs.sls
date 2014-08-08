@@ -3,7 +3,7 @@ include:
 
 neutron-ovs-setup:
   file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/neutron_ovs.sh
+    - name: /opt/cloud.datayes.com/openstack/neutron_ovs.sh
     - source: salt://openstack/neutron/setup/neutron_ovs.sh
     - user: root
     - group: root
@@ -18,11 +18,13 @@ neutron-ovs:
     - pkgs:
       - neutron-plugin-openvswitch-agent
       - openvswitch-datapath-dkms
+      - ethtool
     - require_in:
       - file: neutron-conf
+    - require:
       - cmd: update-apt-index
   cmd.run:
-    - name: /bin/bash /opt/cloud.datayes.com/openstack/setup_scripts/neutron_ovs.sh
+    - name: /bin/bash /opt/cloud.datayes.com/openstack/neutron_ovs.sh
     - require:
       - pkg: neutron-ovs
   service.running:
