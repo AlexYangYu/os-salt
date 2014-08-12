@@ -5,5 +5,5 @@ dashboard:
     enable_lb: true
     enable_firewall: false
     enable_quotas: true
-    enable_vpn: false
+    enable_vpn: true 
     profile_support: None

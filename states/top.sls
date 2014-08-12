@@ -45,3 +45,4 @@ base:
     - openstack.neutron.dhcp
     - openstack.neutron.metadata
     - openstack.neutron.lbaas
+    - openstack.neutron.vpnaas
