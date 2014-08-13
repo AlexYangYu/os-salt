@@ -11,8 +11,9 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
  - <del>Heat</del>
  - <del>Zabbix</del>
  - <del>LBaaS</del>
+ - <del>VPNaaS</del>
+ - <del>FWaaS</del>
  - DNSaaS
- - VPNaaS
  - LogStash
  - Ceph RBD
  - Ceph RADOSGW
