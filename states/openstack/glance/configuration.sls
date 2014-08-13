@@ -4,7 +4,7 @@ glance-conf:
     - source: salt://openstack/glance/etc/glance
     - user: glance
     - group: glance
-    - dir_mode: '0700'
+    - dir_mode: '0755'
     - file_mode: '0644'
     - template: jinja
     - context:

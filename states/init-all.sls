@@ -4,5 +4,5 @@ init_all_scripts:
     - source: salt://init_scripts
     - user: root 
     - group: root
-    - dir_mode: '0700'
+    - dir_mode: '0755'
     - file_mode: '0744'

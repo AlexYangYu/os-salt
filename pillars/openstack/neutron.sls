@@ -4,7 +4,7 @@ neutron:
     verbose: true
     core_plugin: ml2 
     neutron_plugin_config: /etc/neutron/plugins/ml2/ml2_conf.ini
-    service_plugins: router,lbaas,vpnaas
+    service_plugins: router,lbaas,vpnaas,firewall
     auth_strategy: keystone
     allow_bulk: true
     allow_overlapping_ips: true
@@ -84,7 +84,7 @@ neutron:
       enable_security_group: true
       firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
   lbaas:
-    debug: True
+    debug: true
     periodic_interval: 10
     interface_driver: neutron.agent.linux.interface.OVSInterfaceDriver
     ovs_use_veth: false
@@ -96,3 +96,6 @@ neutron:
   vpn:
     vpn_device_driver: neutron.services.vpn.device_drivers.ipsec.OpenSwanDriver
     ipsec_status_check_interval: 60
+  fwaas:
+    driver: neutron.services.firewall.drivers.linux.iptables_fwaas.IptablesFwaasDriver
+    enabled: true

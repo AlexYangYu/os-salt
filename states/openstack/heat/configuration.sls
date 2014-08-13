@@ -4,7 +4,7 @@ heat-configuration:
     - source: salt://openstack/heat/etc/heat
     - user: heat
     - group: heat
-    - dir_mode: '0700'
+    - dir_mode: '0755'
     - file_mode: '0644'
     - template: jinja
     - context:
