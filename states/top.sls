@@ -41,7 +41,6 @@ base:
     - base.ntp-client
     - openstack.nova.compute
     - openstack.neutron.ovs
-    - openstack.neutron.l3
     - openstack.neutron.dhcp
     - openstack.neutron.metadata
     - openstack.neutron.lbaas
