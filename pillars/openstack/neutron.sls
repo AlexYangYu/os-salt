@@ -4,7 +4,7 @@ neutron:
     verbose: true
     core_plugin: ml2 
     neutron_plugin_config: /etc/neutron/plugins/ml2/ml2_conf.ini
-    service_plugins: router,lbaas,vpnaas,firewall
+    service_plugins: router,lbaas,vpnaas,firewall,metering
     auth_strategy: keystone
     allow_bulk: true
     allow_overlapping_ips: true
@@ -99,3 +99,7 @@ neutron:
   fwaas:
     driver: neutron.services.firewall.drivers.linux.iptables_fwaas.IptablesFwaasDriver
     enabled: true
+  metering:
+    driver: neutron.services.metering.drivers.iptables.iptables_driver.IptablesMeteringDriver
+    measure_interval: 30
+    report_interval: 300
