@@ -1,19 +1,19 @@
 include:
   - openstack.neutron.configuration
 
-neutron-vpnaas:
+neutron-metering:
   pkg.installed:
     - pkgs:
-      - neutron-vpn-agent
+      - neutron-metering-agent
       - openswan
     - require_in:
       - file: neutron-conf
     - require:
       - cmd: update-apt-index
   service.running:
-    - name: neutron-vpn-agent
+    - name: neutron-metering-agent
     - enable: True
     - require:
-      - pkg: neutron-vpnaas
+      - pkg: neutron-metering
     - watch:
       - file: neutron-conf
