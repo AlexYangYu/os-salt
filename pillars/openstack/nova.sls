@@ -24,3 +24,4 @@ nova:
   compute:
     compute_driver: libvirt.LibvirtDriver
     virt_type: kvm 
+    force_config_drive: false
