@@ -69,7 +69,7 @@ neutron:
   ovs:
     tunnel_type: vxlan 
     enable_tunneling: true
-    network_vlan_ranges: pyhsnet1
+    network_vlan_ranges: pyhsnet1:130:131
     bridge_mappings: pyhsnet1:br-ex
     tunnel_id_ranges: 500:10000
     integration_bridge: br-int

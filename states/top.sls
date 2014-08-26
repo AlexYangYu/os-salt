@@ -3,18 +3,20 @@ base:
     - mysql.client
     - openstack.memcached
     - zabbix.agent
-  'controller.wx-datayes.com':
+  'brain.bs-datayes.com':
     - base.ntp-server
-  'os-ctl.wx-datayes.com':
+    - mysql.init-mysql
+    - mysql.server
+    - zabbix.init-zabbix
+    - zabbix.server
+    - zabbix.web
+  'os-ctl.bs-datayes.com':
     - init-all
     - base.source-list
     - base.interfaces
     - base.ntp-client
     - mysql.init-mysql
     - mysql.server
-    - zabbix.init-zabbix
-    - zabbix.server
-    - zabbix.web
     - openstack.init-openstack
     - openstack.clients
     - openstack.message-queue.rabbit
@@ -29,13 +31,10 @@ base:
     - openstack.nova.scheduler
     - openstack.neutron.api
     - openstack.dashboard.apache-dashboard
-    - openstack.cinder.api
-    - openstack.cinder.scheduler
-    - openstack.cinder.volume
     - openstack.heat.api
     - openstack.heat.api-cfn
     - openstack.heat.engine
-  'os-cp[1-3].wx-datayes.com':
+  'os-cp[1-3].bs-datayes.com':
     - base.source-list
     - base.interfaces
     - base.ntp-client
