@@ -69,8 +69,8 @@ neutron:
   ovs:
     tunnel_type: vxlan 
     enable_tunneling: true
-    network_vlan_ranges: pyhsnet1:130:131
-    bridge_mappings: pyhsnet1:br-ex
+    network_vlan_ranges: provicer-be-ex:130:131
+    bridge_mappings: provider-br-ex:br-ex
     tunnel_id_ranges: 500:10000
     integration_bridge: br-int
     tunnel_bridge: br-tun
