@@ -20,3 +20,10 @@ if [ 0 -ne $? ]
 then
     ifup {{ network.storage_interface }} 
 fi
+
+# ifup the data interface
+ip a | grep {{ network.data_interface }} | grep UP
+if [ 0 -ne $? ]
+then
+    ifup {{ network.data_interface }}
+fi
