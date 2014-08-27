@@ -5,6 +5,12 @@ base:
     - zabbix.agent
   'controller.wx-datayes.com':
     - base.ntp-server
+    - init-all
+    - mysql.init-mysql
+    - mysql.server
+    - zabbix.init-zabbix
+    - zabbix.server
+    - zabbix.web
   'os-ctl.wx-datayes.com':
     - init-all
     - base.source-list
@@ -12,9 +18,6 @@ base:
     - base.ntp-client
     - mysql.init-mysql
     - mysql.server
-    - zabbix.init-zabbix
-    - zabbix.server
-    - zabbix.web
     - openstack.init-openstack
     - openstack.clients
     - openstack.message-queue.rabbit
