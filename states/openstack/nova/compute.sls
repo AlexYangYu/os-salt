@@ -28,3 +28,10 @@ kernel-patch:
   cmd.run:
     - name: dpkg-statoverride --update --add root root 0644 /boot/vmlinuz-$(uname -r)
     - onlyif: test '-rw-r--r--' != $(ls -l /boot/vmlinuz-$(uname -r) | awk '{print $1}')
+
+disable-libvirt-defalut-net:
+  cmd.run:
+    - name: virsh net-destroy default
+    - onlyif: virsh net-list | grep default
+    - require:
+      - pkg: nova-compute
