@@ -41,9 +41,11 @@ neutron:
   agent:
     report_interval: 5
   ml2:
-    type_drivers: vxlan 
-    tenant_network_types: vxlan 
+    type_drivers: vxlan,vlan
+    tenant_network_types: vxlan,vlan 
     mechanism_drivers: openvswitch,l2population
+    vlan:
+      network_vlan_ranges: provider-br-ex
     gre:
       tunnel_id_ranges: 1:10000
     vxlan:
@@ -69,8 +71,8 @@ neutron:
   ovs:
     tunnel_type: vxlan 
     enable_tunneling: true
-    network_vlan_ranges: pyhsnet1
-    bridge_mappings: pyhsnet1:br-ex
+    network_vlan_ranges: provider-br-ex
+    bridge_mappings: provider-br-ex:br-ex
     tunnel_id_ranges: 500:10000
     integration_bridge: br-int
     tunnel_bridge: br-tun
