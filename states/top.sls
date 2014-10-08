@@ -3,6 +3,7 @@ base:
     - mysql.client
     - openstack.memcached
     - zabbix.agent
+    - zabbix.scripts
   'controller.wx-datayes.com':
     - base.ntp-server
     - init-all
