@@ -1,6 +1,8 @@
 zabbix:
   agent:
     server: zbx-server 
+    debug_level: 3
+    all_parameters: 1
   server:
     listen_ip: 0.0.0.0
     listen_port: 10051

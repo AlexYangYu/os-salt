@@ -10,8 +10,12 @@ zabbix-agent:
     - template: jinja
     - defaults:
       server: {{ pillar['zabbix']['agent']['server'] }}
+      debug_level: {{ pillar['zabbix']['agent']['debug_level'] }}
+      all_parameters: {{ pillar['zabbix']['agent']['all_parameters'] }} 
     - require:
       - pkg: zabbix-agent
+  cmd.run:
+    - name: '/bin/echo "zabbix ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/zabbix'
   service.running:
     - enable: True
     - watch:
