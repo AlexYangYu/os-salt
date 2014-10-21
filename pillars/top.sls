@@ -1,5 +1,8 @@
 base:
   '*':
+    - environment
+    - mine_functions
+    - ceph
     - ntp
     - mysql
     - source
