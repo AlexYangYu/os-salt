@@ -1,3 +1,5 @@
+# vi: set ft=yaml.jinja :
+
 {% set cluster = salt['pillar.get']('ceph:global:cluster') -%}
 {% set admin_keyring = '/etc/ceph/' + cluster + '.client.admin.keyring' -%}
 {% set mon_keyring = '/etc/ceph/' + cluster + '.mon.keyring' -%}
