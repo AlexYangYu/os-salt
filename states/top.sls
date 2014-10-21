@@ -1,5 +1,6 @@
 base:
   '*':
+    - salt.roles
     - mysql.client
     - openstack.memcached
     - zabbix.agent
