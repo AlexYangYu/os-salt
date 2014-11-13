@@ -1,3 +1,7 @@
+{% set host = salt['config.get']('host') %}
+{% set interfaces =  salt['pillar.get']('nodes:' + host + ':interfaces') %}
+{% set external_interface = salt['pillar.get']('network:external_interface') %}
+
 /etc/network/interfaces:
   file.managed:
     - source: salt://base/interfaces
@@ -5,22 +9,18 @@
     - group: root
     - mode: '0644'
     - template: jinja
-      network: {{ pillar['network'] }}
 
-/opt/cloud.datayes.com/openstack/ifup_interfaces.sh:
-  file.managed:
-    - source: salt://base/ifup_interfaces.sh
-    - makedirs: True
-    - user: root
-    - group: root
-    - mode: '0744'
-    - template: jinja
-    - context:
-      network: {{ pillar['network'] }}
+{% for interface in interfaces %}
 
-ifup_interfaces:
+{% if interface == external_interface %}
+{% else %}
+ifup {{ interface }}:
   cmd.run:
-    - name: /bin/bash /opt/cloud.datayes.com/openstack/ifup_interfaces.sh
+    - unless: ip a show {{ interface }} | grep UP
     - require:
       - file: /etc/network/interfaces
-      - file: /opt/cloud.datayes.com/openstack/ifup_interfaces.sh
+    - require_in:
+      - file: apt-source
+{% endif %}
+
+{% endfor %}

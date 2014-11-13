@@ -5,7 +5,7 @@ rabbitmq-server:
 rabbit-setup-scripts:
   file:
     - managed
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/rabbitmq.sh
+    - name: /opt/cloud.datayes.com/openstack/rabbitmq.sh
     - source: salt://openstack/message-queue/setup/rabbitmq.sh
     - makedirs: True
     - user: root

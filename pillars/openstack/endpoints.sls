@@ -94,5 +94,5 @@ endpoints:
       port: 8000 
       version: v1
   novnc:
-    host: 10.22.203.22
+    host: 10.22.134.30
     port: 6080

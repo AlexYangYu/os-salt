@@ -45,7 +45,7 @@ neutron:
     tenant_network_types: vxlan,vlan
     mechanism_drivers: openvswitch,l2population
     vlan:
-      network_vlan_ranges: provider-br-ex:130:131
+      network_vlan_ranges: provider-br-ex
     gre:
       tunnel_id_ranges: 1:10000
     vxlan:
@@ -71,7 +71,7 @@ neutron:
   ovs:
     tunnel_type: vxlan 
     enable_tunneling: true
-    network_vlan_ranges: provider-br-ex:130:131
+    network_vlan_ranges: provider-br-ex
     bridge_mappings: provider-br-ex:br-ex
     tunnel_id_ranges: 500:10000
     integration_bridge: br-int

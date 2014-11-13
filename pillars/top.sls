@@ -15,3 +15,4 @@ base:
     - openstack.heat
     - zabbix
     - network
+    - interfaces

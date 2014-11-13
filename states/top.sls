@@ -1,20 +1,20 @@
 base:
   '*':
+    - base.source-list
+    - base.interfaces
     - mysql.client
     - openstack.memcached
     - zabbix.agent
-  'brain.bs-datayes.com':
+  'mgt-center.t-datayes.com':
     - base.ntp-server
     - mysql.init-mysql
     - mysql.server
     - zabbix.init-zabbix
     - zabbix.server
     - zabbix.web
-  'os-ctl.bs-datayes.com':
-    - init-all
-    - base.source-list
-    - base.interfaces
+  'ctl01.t-datayes.com':
     - base.ntp-client
+    - init-all
     - mysql.init-mysql
     - mysql.server
     - openstack.init-openstack
@@ -30,15 +30,19 @@ base:
     - openstack.nova.novncproxy
     - openstack.nova.scheduler
     - openstack.neutron.api
+    - openstack.cinder.api
+    - openstack.cinder.scheduler
+    - openstack.cinder.volume
     - openstack.dashboard.apache-dashboard
     - openstack.heat.api
     - openstack.heat.api-cfn
     - openstack.heat.engine
-  'os-cp[1-3].bs-datayes.com':
-    - base.source-list
-    - base.interfaces
+  'compute*':
     - base.ntp-client
     - openstack.nova.compute
+    - openstack.neutron.ovs
+  'net*':
+    - base.ntp-client
     - openstack.neutron.ovs
     - openstack.neutron.dhcp
     - openstack.neutron.metadata

@@ -1,19 +1,43 @@
+{% set host = salt['config.get']('host') %}
+{% set interfaces =  salt['pillar.get']('nodes:' + host + ':interfaces') %}
+{% set external_interface = salt['pillar.get']('network:external_interface') %}
+
 auto lo
 iface lo inet loopback
 
-auto {{ network.data_interface }} 
-iface {{ network.data_interface }} inet dhcp
+{% for interface in interfaces %}
 
-auto {{ network.mgt_interface }} 
-iface {{ network.mgt_interface }} inet dhcp
+{% if interface == external_interface %}
 
-auto {{ network.storage_interface }} 
-iface {{ network.storage_interface }} inet dhcp
+auto {{ interface }}
+iface {{ interface }} inet manual
+    up ifconfig $IFACE 0.0.0.0 up
+    up ip link set $IFACE promisc on
+    post-up ethtool -K $IFACE tso off lro off gro off gso off
+    down ip link set $IFACE promisc off
+    down ifconfig $IFACE down
 
-auto {{ network.ext_interface }} 
-iface {{ network.ext_interface }} inet manual
-	up ifconfig $IFACE 0.0.0.0 up
-	up ip link set $IFACE promisc on
-	post-up ethtool -K $IFACE tso off lro off gro off gso off
-	down ip link set $IFACE promisc off
-	down ifconfig $IFACE down
+{% else %}
+
+{% set addr = salt['pillar.get']('nodes:' + host + ':interfaces:' + interface + ':addr') %}
+{% set netmask = salt['pillar.get']('nodes:' + host + ':interfaces:' + interface + ':netmask') %}
+{% set gateway = salt['pillar.get']('nodes:' + host + ':interfaces:' + interface + ':gateway') %}
+{% set dns_nameservers = salt['pillar.get']('nodes:' + host + ':interfaces:' + interface + ':dns_nameservers') %}
+{% set dns_search = salt['pillar.get']('nodes:' + host + ':interfaces:' + interface + ':dns_search') %}
+auto {{ interface }}
+iface {{ interface }} inet static
+    address {{ addr }}
+    netmask {{ netmask }}
+    {% if gateway %}
+    gateway {{ gateway }}
+    {% endif %}
+    {% if dns_nameservers %}
+    dns-nameservers {{ dns_nameservers }}
+    {% endif %}
+    {% if dns_search %}
+    dns-search {{ dns_search }}
+    {% endif %}
+
+{% endif %}
+
+{% endfor %}

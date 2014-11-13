@@ -16,7 +16,7 @@ nova-compute:
       - pkg: nova-compute
       - file: /etc/nova
     - require:
-      - cmd.run: kernel-patch
+      - cmd: kernel-patch
 
 kernel-patch:
   file.managed:
