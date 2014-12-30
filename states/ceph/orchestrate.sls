@@ -9,3 +9,5 @@ osd_setup:
     - tgt: 'roles:ceph-osd'
     - tgt_type: grain
     - sls: ceph.osd
+    - require:
+      - salt: mon_setup
