@@ -1,5 +1,5 @@
 {% set host = salt['config.get']('host') -%}
-{% set roles = salt['pillar.get']('nodes:' + host + ':roles') -%}
+{% set roles = salt['pillar.get']('roles:' + host) -%}
 
 {% if roles -%}
 roles:
