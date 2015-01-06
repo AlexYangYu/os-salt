@@ -14,15 +14,11 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
  - <del>VPNaaS</del>
  - <del>FWaaS</del>
  - <del>L3 Metering</del>
- - DNSaaS
+ - <del>Ceph RBD</del>
  - LogStash
- - Ceph RBD
- - Ceph RADOSGW
  - MySQL HA
  - RabbitMQ HA
  - HAProxy
- - Ceilometer
- - Trove
 
 # Howtos
 
