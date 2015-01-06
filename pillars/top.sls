@@ -1,5 +1,6 @@
 base:
   '*':
+    - roles
     - environment
     - mine_functions
     - ceph
