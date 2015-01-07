@@ -1,9 +1,9 @@
 base:
   '*':
     - roles
-    - environment
+    - ceph.env
+    - ceph.conf
     - mine_functions
-    - ceph
     - ntp
     - mysql
     - source

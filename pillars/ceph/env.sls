@@ -1,8 +1,5 @@
 nodes:
   os-cp1:
-    roles:
-      - ceph-mon
-      - ceph-osd
     devs:
       sdb:
         journal: sdb
@@ -13,9 +10,6 @@ nodes:
       sde:
         journal: sde
   os-cp2:
-    roles:
-      - ceph-mon
-      - ceph-osd
     devs:
       sdb:
         journal: sdb
@@ -26,9 +20,6 @@ nodes:
       sde:
         journal: sde
   os-cp3:
-    roles:
-      - ceph-mon
-      - ceph-osd
     devs:
       sdb:
         journal: sdb
