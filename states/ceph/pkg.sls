@@ -1,4 +1,6 @@
-{% set cluster = salt['grains.get']('environment', 'ceph') -%}
+{% set cluster = salt['pillar.get']('ceph:global:cluster') -%}
+{% set apt_source = salt['pillar.get']('ceph:source:apt_source') -%}
+{% set apt_key = salt['pillar.get']('ceph:source:apt_key') -%}
 
 python-apt:
   pkg.installed:
@@ -7,9 +9,9 @@ python-apt:
 
 ceph-repo:
   pkgrepo.managed:
-    - name: deb http://apt-server/ceph trusty main
+    - name: deb http://{{ apt_source }}/ceph trusty main
     - file: /etc/apt/sources.list.d/ceph.list
-    - key_url: https://raw.github.com/ceph/ceph/master/keys/release.asc
+    - key_url: {{ apt_key }}
     - require_in:
       - pkg: ceph-pkg
 

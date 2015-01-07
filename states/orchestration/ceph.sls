@@ -1,13 +1,13 @@
-mon_setup:
+setup_mon:
   salt.state:
     - tgt: 'roles:ceph-mon'
     - tgt_type: grain
     - sls: ceph.mon
 
-osd_setup:
+setup_osd:
   salt.state:
     - tgt: 'roles:ceph-osd'
     - tgt_type: grain
     - sls: ceph.osd
     - require:
-      - salt: mon_setup
+      - salt: setup_mon
