@@ -1,7 +1,7 @@
 ceph:
   source:
     apt_source: apt-server
-    apt_key: https://raw.github.com/ceph/ceph/master/keys/release.asc
+    apt_key: http://controller.wx-datayes.com/keys/ceph
   global:
     cluster: ceph
     fsid: 5e30f1e7-b80e-4382-9476-38bd4c32ea92

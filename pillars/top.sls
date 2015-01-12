@@ -3,6 +3,7 @@ base:
     - roles
     - ceph.env
     - ceph.conf
+    - mariadb.conf
     - mine_functions
     - ntp
     - mysql
