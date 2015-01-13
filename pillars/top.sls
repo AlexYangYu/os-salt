@@ -1,5 +1,6 @@
 base:
   '*':
+    - global
     - roles
     - ceph.env
     - ceph.conf
