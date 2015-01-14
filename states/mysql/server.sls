@@ -1,3 +1,5 @@
+# vi: set ft=yaml.jinja :
+
 mysql-server-packages:
   pkg.installed:
     - name: mysql-server 

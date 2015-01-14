@@ -1,8 +1,12 @@
+# vi: set ft=yaml.jinja :
+
 base:
   '*':
+    - global
     - roles
     - ceph.env
     - ceph.conf
+    - mariadb.conf
     - mine_functions
     - ntp
     - mysql
