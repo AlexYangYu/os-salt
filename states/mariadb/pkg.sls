@@ -1,3 +1,5 @@
+# vi: set ft=yaml.jinja :
+
 {% set apt_source = salt['pillar.get']('mariadb:source:apt_source') -%}
 {% set apt_key = salt['pillar.get']('mariadb:source:apt_key') -%}
 

@@ -10,14 +10,18 @@ include:
 
 mariadb-debconf:
     debconf.set:
-        - name: mariadb-server
+        - name: mariadb-galera-server
         - data:
             'mysql-server/root_password': {'type':'string','value':{{ admin_pass }}}
             'mysql-server/root_password_again': {'type':'string','value':{{ admin_pass }}}
 
-mariadb-server-pkgs:
+mariadb-cluster-pkgs:
     pkg.installed:
-        - name: mariadb-server
+        - names:
+            - mariadb-galera-server
+            - galera
+            - xtrabackup
+            - socat
         - require:
             - debconf: mariadb-debconf
             - pkgrepo: mariadb-repo
@@ -29,7 +33,18 @@ mariadb-update-maint:
         - name: mysql -hlocalhost -P{{ port }} -u root -p{{ admin_pass }} -e "GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY '{{ maintenance_pass }}';"
         - onlyif: killall -0 mysqld
         - require:
-            - pkg: mariadb-server-pkgs
+            - pkg: mariadb-cluster-pkgs
+
+{% set sst_user = pillar['mariadb_cluster']['wsrep_sst_user'] %}
+{% set sst_pass = pillar['mariadb_cluster']['wsrep_sst_pass'] %}
+{% if 'mysql-cluster-donor' in grains['roles'] %}
+mariadb-create-cluster-user:
+    cmd.run:
+        - name: mysql -hlocalhost -P{{ port }} -u root -p{{ admin_pass }} -e "GRANT USAGE ON *.* to {{ sst_user }}@'%' IDENTIFIED BY '{{ sst_pass }}'; GRANT ALL PRIVILEGES on *.* to {{ sst_user }}@'%'; FLUSH PRIVILEGES;"
+        - onlyif: killall -0 mysqld
+        - require:
+            - pkg: mariadb-cluster-pkgs
+{% endif %}
 
 mariadb-server-configuration:
     file.managed:
