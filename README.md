@@ -16,10 +16,10 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
  - <del>L3 Metering</del>
  - <del>Ceph RBD</del>
  - <del>MySQL HA</del>
- - HAProxy
+ - <del>HAProxy</del>
  - KeepAlived
- - LogStash
  - RabbitMQ HA
+ - LogStash
 
 # Howtos
 
