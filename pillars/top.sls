@@ -7,6 +7,8 @@ base:
     - ceph.env
     - ceph.conf
     - mariadb.conf
+    - haproxy.conf
+    - haproxy.cluster
     - mine_functions
     - ntp
     - mysql

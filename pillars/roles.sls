@@ -6,10 +6,12 @@ roles:
     - ceph-client
     - mysql-server
     - mysql-client
+    - haproxy
   os-ctl:
     - ntp-client
     - ceph-client
     - mysql-client
+    - haproxy
   os-cp1: 
     - ntp-client
     - ceph-mon
