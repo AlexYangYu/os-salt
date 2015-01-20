@@ -17,7 +17,7 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
  - <del>Ceph RBD</del>
  - <del>MySQL HA</del>
  - <del>HAProxy</del>
- - KeepAlived
+ - <del>KeepAlived</del>
  - RabbitMQ HA
  - LogStash
 

@@ -7,11 +7,13 @@ roles:
     - mysql-server
     - mysql-client
     - haproxy
+    - ha-master
   os-ctl:
     - ntp-client
     - ceph-client
     - mysql-client
     - haproxy
+    - ha-slave
   os-cp1: 
     - ntp-client
     - ceph-mon

@@ -3,13 +3,14 @@
 base:
   '*':
     - global
+    - mine_functions
     - roles
     - ceph.env
     - ceph.conf
     - mariadb.conf
     - haproxy.conf
     - haproxy.cluster
-    - mine_functions
+    - keepalive.conf 
     - ntp
     - mysql
     - source
