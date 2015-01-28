@@ -14,20 +14,22 @@ ceph-repo:
         - name: deb http://{{ apt_source }}/ceph trusty main
         - file: /etc/apt/sources.list.d/ceph.list
         - key_url: {{ apt_key }}
-        - require_in:
-            - pkg: ceph-pkg
 
-ceph-pkg:
+ceph-pkgs:
     pkg.installed:
-        - name: ceph
+        - pkgs:
+            - python-ceph
+            - ceph-common
+        - require:
+            - pkgrepo: ceph-repo 
 
-ceph-conf:
+ceph-client-conf: 
     file.managed:
         - name: /etc/ceph/{{ cluster }}.conf
-        - source: salt://ceph/etc/ceph.conf
+        - source: salt://ceph/etc/ceph-client.conf
         - user: root
         - group: root
         - mode: '0644'
         - template: jinja
         - require:
-            - pkg: ceph-pkg
+            - pkg: ceph-pkgs
