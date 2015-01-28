@@ -18,7 +18,7 @@ This project is aimed to deploy a production-ready OpenStack with StaltStack.
  - <del>MySQL HA</del>
  - <del>HAProxy</del>
  - <del>KeepAlived</del>
- - RabbitMQ HA
+ - <de>RabbitMQ HA</del>
  - LogStash
 
 # Howtos
