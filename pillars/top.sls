@@ -11,6 +11,7 @@ base:
     - haproxy.conf
     - haproxy.cluster
     - keepalive.conf 
+    - rabbitmq.conf
     - ntp
     - mysql
     - source
