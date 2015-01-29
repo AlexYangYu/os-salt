@@ -40,7 +40,7 @@ mariadb-update-maint:
 {% if 'mysql-cluster-donor' in grains['roles'] %}
 mariadb-create-cluster-user:
     cmd.run:
-        - name: mysql -hlocalhost -P{{ port }} -u root -p{{ admin_pass }} -e "GRANT USAGE ON *.* to {{ sst_user }}@'%' IDENTIFIED BY '{{ sst_pass }}'; GRANT ALL PRIVILEGES on *.* to {{ sst_user }}@'%'; FLUSH PRIVILEGES;"
+        - name: mysql -hlocalhost -P{{ port }} -u root -p{{ admin_pass }} -e "GRANT USAGE ON *.* to {{ sst_user }}@'%' IDENTIFIED BY '{{ sst_pass }}'; GRANT ALL PRIVILEGES on *.* to {{ sst_user }}@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
         - onlyif: killall -0 mysqld
         - require:
             - pkg: mariadb-cluster-pkgs

@@ -1,5 +1,7 @@
+# vi: set ft=yaml.jinja :
+
 mysql:
-  bind_address: 0.0.0.0
-  admin_user: root
-  admin_pass: r00t
-  max_connections: 3000
+    bind_address: 0.0.0.0
+    admin_user: root
+    admin_pass: r00t
+    max_connections: 3000
