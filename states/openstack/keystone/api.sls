@@ -1,13 +1,18 @@
+# vi: set ft=yaml.jinja :
+
 include:
-  - openstack.keystone.configuration
+    - openstack.repo
+    - openstack.memcached
+    - openstack.keystone.configuration
 
 keystone-api:
-  pkg.installed:
-    - name: keystone
-    - require_in:
-      - file: keystone-conf
-    - require:
-      - cmd: update-apt-index
-  service.running:
-    - name: keystone
-    - enable: True
+    pkg.installed:
+        - name: keystone
+        - refresh: Ture
+        - require_in:
+            - file: keystone-conf
+        - require:
+            - pkg: memcache
+    service.running:
+        - name: keystone
+        - enable: True

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+{% set script_path = pillar['global']['script_path'] %}
+
 set -o nounset
 set -e
 
 echo "Create Keystone database"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ keystone.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ keystone.database.mysql_db }}.* TO '{{ keystone.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ keystone.database.mysql_pass }}';"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ keystone.database.mysql_db }}.* TO '{{ keystone.database.mysql_user }}'@'%' IDENTIFIED BY '{{ keystone.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "CREATE DATABASE {{ keystone.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ keystone.database.mysql_db }}.* TO '{{ keystone.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ keystone.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ keystone.database.mysql_db }}.* TO '{{ keystone.database.mysql_user }}'@'%' IDENTIFIED BY '{{ keystone.database.mysql_pass }}';"
 
 echo "Create Keystone database schema"
 keystone-manage db_sync
@@ -16,7 +18,7 @@ service keystone restart
 sleep 5
 
 echo "Result"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ keystone.database.mysql_db }}; show tables;"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ keystone.database.mysql_user }} -p{{ keystone.database.mysql_pass }} -e "use {{ keystone.database.mysql_db }}; show tables;"
 
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
@@ -26,7 +28,8 @@ keystone user-create --name={{ data.admin_user.name }} --pass={{ data.admin_user
 keystone role-create --name=admin
 keystone tenant-create --name=admin --description="Admin Tenant"
 keystone user-role-add --user={{ data.admin_user.name }} --role=admin --tenant=admin
-keystone user-role-add --user={{ data.admin_user.name }} --role=_member_ --tenant=admin
+# not support in juno
+#keystone user-role-add --user={{ data.admin_user.name }} --role=_member_ --tenant=admin
 
 echo "Create Service tenant"
 keystone tenant-create --name=service --description="Service Tenant"
@@ -50,3 +53,6 @@ export OS_AUTH_URL={{ endpoints.keystone.public.protocol }}://{{ endpoints.keyst
 
 keystone token-get
 keystone user-list
+
+mkdir -p {{ script_path }}/run
+touch {{ script_path }}/run/keystone.init.lock

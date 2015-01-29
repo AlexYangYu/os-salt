@@ -8,12 +8,15 @@ roles:
         - mysql-client
         - haproxy
         - ha-master
+        - openstack-init
+        - keystone-api
     os-ctl:
         - ntp-client
         - ceph-client
         - mysql-client
         - haproxy
         - ha-slave
+        - keystone-api
     os-cp1: 
         - ntp-client
         - ceph-ctl
