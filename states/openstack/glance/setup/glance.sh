@@ -1,16 +1,21 @@
 #!/bin/bash - 
 
+{% set script_path = pillar['global']['script_path'] %}
+
+set -o nounset
+set -e
+
 echo "Create Glance database"
 rm -rf /var/lib/glance/glance.sqlite
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ glance.database.mysql_user }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ glance.database.mysql_db }}.* TO '{{ glance.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ glance.database.mysql_pass }}';"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ glance.database.mysql_db }}.* TO '{{ glance.database.mysql_user }}'@'%' IDENTIFIED BY '{{ glance.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "CREATE DATABASE {{ glance.database.mysql_user }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ glance.database.mysql_db }}.* TO '{{ glance.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ glance.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ glance.database.mysql_db }}.* TO '{{ glance.database.mysql_user }}'@'%' IDENTIFIED BY '{{ glance.database.mysql_pass }}';"
 
 echo "Create Glacne database schema"
 glance-manage db_sync
 
 echo "Resulte"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ glance.database.mysql_db }}; show tables;"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ glance.database.mysql_user }} -p{{ glance.database.mysql_pass }} -e "use {{ glance.database.mysql_db }}; show tables;"
 
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
@@ -43,3 +48,6 @@ glance image-create \
 --container-format={{ data.base_image.container_format }} \
 --is-public=true \
 --copy-from {{ data.base_image.url }}
+
+mkdir -p {{ script_path }}/run
+touch {{ script_path }}/run/keystone.init.lock

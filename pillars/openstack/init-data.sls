@@ -28,7 +28,7 @@ init-data:
         passwd: heat_pass
         email: heat-admin@foo.com
     base_image:
-        name: cirros-0.3.2-x86_64
-        url: http://cdn.download.cirros-cloud.net/0.3.2/cirros-0.3.2-x86_64-disk.img
-        format: qcow2
+        name: cirros-0.3.3-x86_64
+        url: http://apt-server/images/cirros-0.3.3-x86_64-disk.img
+        format: raw 
         container_format: bare

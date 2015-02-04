@@ -1,10 +1,17 @@
 # vi: set ft=yaml.jinja :
 
 haproxy:
+    global:
+        maxconn: 4000
     defaults:
-        contimeout: 5000
-        clitimeout: 50000
-        srvtimeout: 50000
+        maxconn: 8000
+        retries: 3
+        http_timeout: 10s
+        queue_timeout: 1m
+        connect_timeout: 10s
+        client_timeout: 10m
+        server_timeout: 10m
+        check_timeout: 10s
     web:
         enabled: true
         bind_interface: em2

@@ -14,6 +14,7 @@ mariadb:
         max_connections: 3000
         max_connect_errors: 30
         back_log: 500
+        wait_timeout: 600
         open_files_limit: 1024 
         table_cache: 1024
         binlog_cache_size: 16M
