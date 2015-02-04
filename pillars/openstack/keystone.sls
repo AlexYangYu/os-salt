@@ -25,7 +25,8 @@ keystone:
     database:
         mysql_user: keystone
         mysql_pass: keystone_pass
-        mysql_db: keystone
+        mysql_db: keystone 
+        idle_timeout: 300
         max_pool_size: 30
         max_retries: -1
         max_overflow: 60
@@ -38,7 +39,7 @@ keystone:
     signing:
         token_format: UUID
     token:
-        driver: keystone.token.backends.memcache.Token
+        driver: keystone.token.persistence.backends.memcache.Token
         caching: true
     memcache:
         servers: 127.0.0.1:11211

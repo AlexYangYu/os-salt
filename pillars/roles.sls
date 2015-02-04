@@ -10,6 +10,8 @@ roles:
         - ha-master
         - openstack-init
         - keystone-api
+        - glance-api
+        - glance-registry
     os-ctl:
         - ntp-client
         - ceph-client
@@ -17,6 +19,8 @@ roles:
         - haproxy
         - ha-slave
         - keystone-api
+        - glance-api
+        - glance-registry
     os-cp1: 
         - ntp-client
         - ceph-ctl

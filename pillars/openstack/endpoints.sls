@@ -16,20 +16,20 @@ endpoints:
     glance_api:
         public:
             protocol: http
-            host: glance-api 
+            host: vip-glance-api 
             port: 9292
         admin:
             protocol: http
-            host: glance-api 
+            host: vip-glance-api 
             port: 9292
     glance_registry:
         public:
             protocol: http
-            host: glance-registry 
+            host: vip-glance-registry 
             port: 9191
         admin:
             protocol: http
-            host: glance-registry 
+            host: vip-glance-registry 
             port: 9191
     neutron:
         public:

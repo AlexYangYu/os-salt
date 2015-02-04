@@ -22,6 +22,7 @@ mariadb-cluster-pkgs:
             - galera
             - xtrabackup
             - socat
+            - xinetd
         - require:
             - debconf: mariadb-debconf
             - pkgrepo: mariadb-repo
@@ -73,3 +74,34 @@ mariadb-setup-scripts:
         - template: jinja
         - context:
             mysql: {{ pillar['mariadb'] }}
+
+/etc/xinetd.d/mysqlchk:
+    file.managed:
+        - source: salt://mariadb/files/mysqlchk 
+        - makedirs: True
+        - require:
+            - pkg: mariadb-cluster-pkgs 
+
+/usr/bin/clustercheck:
+    file.managed:
+        - source: salt://mariadb/files/clustercheck 
+        - makedirs: True
+        - mode: '0777'
+        - reuqire:
+            - pkg: mariadb-cluster-pkgs
+
+regist_service:
+    cmd.run:
+        - name: "echo 'mysqlchk 9200/tcp        # MySQL Check' >> /etc/services"
+        - unless: grep 9200 /etc/services
+        - require:
+            - file: /etc/xinetd.d/mysqlchk
+            - file: /usr/bin/clustercheck
+
+xinetd:
+    service.running:
+        - enable: True
+        - reuqire:
+            - pkg: mariadb-cluster-pkgs
+        - watch:
+            - file: /etc/xinetd.d/mysqlchk
