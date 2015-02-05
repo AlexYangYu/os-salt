@@ -38,10 +38,14 @@ keystone endpoint-create \
 --adminurl={{ endpoints.cinder_v2.admin.protocol }}://{{ endpoints.cinder_v2.admin.host }}:{{ endpoints.cinder_v2.admin.port }}/{{ endpoints.cinder_v2.public.version }}/%\(tenant_id\)s
 
 echo "Start Service"
-service cinder-api restart
-service cinder-scheduler restart
-service cinder-volume restart
-service cinder-backup restart
+#service cinder-api restart
+#service cinder-scheduler restart
+#service cinder-volume restart
+#service cinder-backup restart
+salt -G 'roles:cinder-*' cmd.run "service cinder-api restart"
+salt -G 'roles:cinder-*' cmd.run "service cinder-scheduler restart"
+salt -G 'roles:cinder-*' cmd.run "service cinder-volume restart"
+salt -G 'roles:cinder-*' cmd.run "service cinder-backup restart"
 sleep 5
 
 echo "Verify Cinder"

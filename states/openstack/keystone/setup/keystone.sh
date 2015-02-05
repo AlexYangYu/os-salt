@@ -14,7 +14,8 @@ echo "Create Keystone database schema"
 keystone-manage db_sync
 chown -R keystone:keystone /var/log/keystone
 
-service keystone restart
+#service keystone restart
+salt -G 'roles:keystone-*' cmd.run "service keystone restart"
 sleep 5
 
 echo "Result"
