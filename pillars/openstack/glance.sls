@@ -3,7 +3,7 @@
 glance:
     default:
         debug: false
-        verbose: false 
+        verbose: true 
         workers: 4
         show_image_direct_url: true
         default_store: rbd

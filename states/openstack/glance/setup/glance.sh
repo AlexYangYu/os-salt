@@ -31,8 +31,10 @@ keystone endpoint-create \
 --adminurl={{ endpoints.glance_api.admin.protocol }}://{{ endpoints.glance_api.admin.host }}:{{ endpoints.glance_api.admin.port }}
 
 echo "Restart glance-* service"
-service glance-registry restart
-service glance-api restart
+#service glance-registry restart
+salt -G 'roles:glance-*' cmd.run "service glance-registry restart"
+#service glance-api restart
+salt -G 'roles:glance-*' cmd.run "service glance-api restart"
 sleep 5
 
 echo "Add Base Image"
@@ -50,4 +52,4 @@ glance image-create \
 --copy-from {{ data.base_image.url }}
 
 mkdir -p {{ script_path }}/run
-touch {{ script_path }}/run/keystone.init.lock
+touch {{ script_path }}/run/glance.init.lock

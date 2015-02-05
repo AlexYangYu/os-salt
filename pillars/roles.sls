@@ -12,6 +12,10 @@ roles:
         - keystone-api
         - glance-api
         - glance-registry
+        - cinder-api
+        - cinder-scheduler
+        - cinder-volume
+        - cinder-backup
     os-ctl:
         - ntp-client
         - ceph-client
@@ -21,6 +25,10 @@ roles:
         - keystone-api
         - glance-api
         - glance-registry
+        - cinder-api
+        - cinder-scheduler
+        - cinder-volume
+        - cinder-backup
     os-cp1: 
         - ntp-client
         - ceph-ctl

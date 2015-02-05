@@ -54,24 +54,24 @@ endpoints:
     cinder_v1:
         public:
             protocol: http
-            host: cinder-api 
+            host: vip-cinder-api 
             port: 8776 
             version: v1
         admin:
             protocol: http
-            host: cinder-api 
+            host: vip-cinder-api 
             port: 8776 
             version: v1
     cinder_v2:
         public:
             protocol: http
-            host: cinder-api 
-            port: 8774 
+            host: vip-cinder-api 
+            port: 8776 
             version: v2
         admin:
             protocol: http
-            host: cinder-api 
-            port: 8774 
+            host: vip-cinder-api 
+            port: 8776 
             version: v2
     heat_api:
         public:
