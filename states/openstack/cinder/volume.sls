@@ -1,22 +1,25 @@
+# vi: set ft=yaml.jinja :
+
+{% set script_path = pillar['global']['script_path'] %}
+
 include:
-  - openstack.cinder.configuration
+    - openstack.repo
+    - openstack.cinder.configuration
 
 cinder-volume:
-  pkg.installed:
-    - pkgs:
-      - cinder-volume
-      - lvm2
-    - require_in:
-      - file: cinder-conf
-    - require:
-      - cmd: update-apt-index
-  service.running:
-    - name: cinder-volume
-    - enable: True
+    pkg.installed:
+        - pkgs:
+            - cinder-volume
+            - lvm2
+        - require_in:
+            - file: cinder-conf
+    service.running:
+        - name: cinder-volume
+        - enable: True
 
 cinder-volume-setup-lvm-iscsi:
-  file.managed:
-    - name: /opt/cloud.datayes.com/openstack/setup_scripts/cinder_volume.sh
+    file.managed:
+    - name: {{ script_path }}/openstack/cinder_volume.sh
     - source: salt://openstack/cinder/setup/cinder_volume.sh
     - makedirs: True
     - user: root
@@ -25,3 +28,12 @@ cinder-volume-setup-lvm-iscsi:
     - template: jinja
     - context:
       cinder: {{ pillar['cinder'] }}
+
+{% if 'rbd' == pillar['cinder']['default']['default_store'] %}
+cinder_keyring:
+    cmd.run:
+        - name: ceph auth get client.cinder > /etc/ceph/ceph.client.cinder.keyring
+        - require:
+            - pkg: cinder-volume
+{% endif %}
+

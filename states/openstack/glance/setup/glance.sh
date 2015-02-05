@@ -50,4 +50,4 @@ glance image-create \
 --copy-from {{ data.base_image.url }}
 
 mkdir -p {{ script_path }}/run
-touch {{ script_path }}/run/keystone.init.lock
+touch {{ script_path }}/run/glance.init.lock

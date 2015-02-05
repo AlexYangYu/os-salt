@@ -25,3 +25,8 @@ ha_cluster:
         endpoint: vip-glance-registry
         bind_port: 9191
         balance: source
+    cinder_api:
+        role: cinder-api
+        endpoint: vip-cinder-api
+        bind_port: 8776 
+        balance: source

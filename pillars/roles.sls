@@ -15,6 +15,7 @@ roles:
         - cinder-api
         - cinder-scheduler
         - cinder-volume
+        - cinder-backup
     os-ctl:
         - ntp-client
         - ceph-client
@@ -27,6 +28,7 @@ roles:
         - cinder-api
         - cinder-scheduler
         - cinder-volume
+        - cinder-backup
     os-cp1: 
         - ntp-client
         - ceph-ctl
