@@ -7,6 +7,7 @@ include:
 cinder-scheduler:
     pkg.installed:
         - name: cinder-scheduler
+        - refresh: True
         - require_in:
             - file: cinder-conf
     service.running:

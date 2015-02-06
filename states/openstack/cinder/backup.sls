@@ -7,6 +7,7 @@ include:
 cinder-backup:
     pkg.installed:
         - name: cinder-backup
+        - refresh: True
         - require_in:
             - file: cinder-conf
     service.running:

@@ -11,6 +11,7 @@ cinder-volume:
         - pkgs:
             - cinder-volume
             - lvm2
+        - refresh: True
         - require_in:
             - file: cinder-conf
     service.running:

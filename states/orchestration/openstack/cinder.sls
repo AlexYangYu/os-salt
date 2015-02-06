@@ -1,11 +1,11 @@
 # vi: set ft=yaml.jinja :
 
-#bootstrap_cinder_storage:
-#    salt.state:
-#        - tgt: 'roles:ceph-ctl'
-#        - tgt_type: grain
-#        - sls:
-#            - openstack.cinder.bootstrap_storage
+bootstrap_cinder_storage:
+    salt.state:
+        - tgt: 'roles:ceph-ctl'
+        - tgt_type: grain
+        - sls:
+            - openstack.cinder.bootstrap_storage
 
 setup_cinder_api:
     salt.state:
@@ -13,8 +13,8 @@ setup_cinder_api:
         - tgt_type: grain
         - sls:
             - openstack.cinder.api
-#        - require:
-#            - salt: bootstrap_cinder_storage
+        - require:
+            - salt: bootstrap_cinder_storage
 
 setup_cinder_scheduler:
     salt.state:
@@ -43,11 +43,11 @@ setup_cinder_backup:
         - require:
             - salt: setup_cinder_volume
 
-#init_cinder_service:
-#    salt.state:
-#        - tgt: 'roles:openstack-init'
-#        - tgt_type: grain
-#        - sls:
-#            - openstack.cinder.init
-#        - require:
-#            - salt: setup_cinder_backup
+init_cinder_service:
+    salt.state:
+        - tgt: 'roles:openstack-init'
+        - tgt_type: grain
+        - sls:
+            - openstack.cinder.init
+        - require:
+            - salt: setup_cinder_backup

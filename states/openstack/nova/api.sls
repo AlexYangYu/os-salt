@@ -1,13 +1,15 @@
+# vi: set ft=yaml.jinja :
+
 include:
-  - openstack.nova.configuration
+    - openstack.repo
+    - openstack.nova.configuration
 
 nova-api:
-  pkg.installed:
-    - name: nova-api
-    - require_in:
-      - file: nova-conf
-    - require:
-      - cmd: update-apt-index
-  service.running:
-    - name: nova-api
-    - enable: True
+    pkg.installed:
+        - name: nova-api
+        - refresh: True
+        - require_in:
+            - file: nova-conf
+    service.running:
+        - name: nova-api
+        - enable: True

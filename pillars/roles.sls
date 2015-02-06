@@ -16,6 +16,12 @@ roles:
         - cinder-scheduler
         - cinder-volume
         - cinder-backup
+        - nova-api
+        - nova-cert
+        - nova-conductor
+        - nova-consoleauth
+        - nova-novncproxy
+        - nova-scheduler
     os-ctl:
         - ntp-client
         - ceph-client
@@ -29,6 +35,12 @@ roles:
         - cinder-scheduler
         - cinder-volume
         - cinder-backup
+        - nova-api
+        - nova-cert
+        - nova-conductor
+        - nova-consoleauth
+        - nova-novncproxy
+        - nova-scheduler
     os-cp1: 
         - ntp-client
         - ceph-ctl
@@ -38,6 +50,7 @@ roles:
         - mysql-cluster-donor
         - mysql-client
         - rabbitmq-ram
+        - nova-compute
     os-cp2:
         - ntp-client
         - ceph-mon
@@ -45,6 +58,7 @@ roles:
         - mysql-cluster
         - mysql-client
         - rabbitmq-ram
+        - nova-compute
     os-cp3:
         - ntp-client
         - ceph-mon
@@ -52,3 +66,4 @@ roles:
         - mysql-cluster
         - mysql-client
         - rabbitmq-disc
+        - nova-compute
