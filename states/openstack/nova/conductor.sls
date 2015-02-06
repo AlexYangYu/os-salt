@@ -1,13 +1,15 @@
+# vi: set ft=yaml.jinja :
+
 include:
-  - openstack.nova.configuration
+    - openstack.repo
+    - openstack.nova.configuration
 
 nova-conductor:
-  pkg.installed:
-    - name: nova-conductor
-    - require_in:
-      - file: nova-conf
-    - require:
-      - cmd: update-apt-index
-  service.running:
-    - name: nova-conductor
-    - enable: True
+    pkg.installed:
+        - name: nova-conductor
+        - refresh: True
+        - require_in:
+            - file: nova-conf
+    service.running:
+        - name: nova-conductor
+        - enable: True

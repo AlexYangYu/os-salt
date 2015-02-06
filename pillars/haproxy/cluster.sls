@@ -30,3 +30,18 @@ ha_cluster:
         endpoint: vip-cinder-api
         bind_port: 8776 
         balance: source
+    ec2_api:
+        role: nova-api
+        endpoint: vip-nova-api
+        bind_port: 8773
+        balance: source
+    nova_api:
+        role: nova-api
+        endpoint: vip-nova-api
+        bind_port: 8774
+        balance: source
+    nova_metadata_api:
+        role: nova-api
+        endpoint: vip-nova-api
+        bind_port: 8775
+        balance: source

@@ -34,21 +34,21 @@ endpoints:
     neutron:
         public:
             protocol: http
-            host: neutron-api 
+            host: vip-neutron-api 
             port: 9696 
         admin:
             protocol: http
-            host: neutron-api 
+            host: vip-neutron-api 
             port: 9696 
     nova:
         public:
             protocol: http
-            host: nova-api 
+            host: vip-nova-api 
             port: 8774 
             version: v2
         admin:
             protocol: http
-            host: nova-api 
+            host: vip-nova-api 
             port: 8774 
             version: v2
     cinder_v1:
@@ -76,25 +76,25 @@ endpoints:
     heat_api:
         public:
             protocol: http
-            host: heat-api 
+            host: vip-heat-api 
             port: 8004
             version: v1
         admin:
             protocol: http
-            host: heat-api 
+            host: vip-heat-api 
             port: 8004 
             version: v1
     heat_cfn:
         public:
             protocol: http
-            host: heat-api 
+            host: vip-heat-api 
             port: 8000
             version: v1
         admin:
             protocol: http
-            host: heat-api 
+            host: vip-heat-api 
             port: 8000 
             version: v1
     novnc:
-        host: 10.20.133.34 
+        host: vip-novnc 
         port: 6080

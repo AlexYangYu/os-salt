@@ -7,6 +7,7 @@ include:
 cinder-api:
     pkg.installed:
         - name: cinder-api
+        - refresh: True
         - require_in:
             - file: cinder-conf
     service.running:
