@@ -50,3 +50,8 @@ ha_cluster:
         endpoint: vip-neutron-api
         bind_port: 9696 
         balance: source
+    dashboard:
+        role: dashboard
+        endpoint: vip-dashboard
+        bind_port: 8080
+        balance: source
