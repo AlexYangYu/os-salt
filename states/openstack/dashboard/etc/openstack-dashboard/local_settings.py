@@ -181,8 +181,8 @@ OPENSTACK_KEYSTONE_BACKEND = {
 # can_set_mount_point to True will add the option to set the mount point
 # from the UI.
 OPENSTACK_HYPERVISOR_FEATURES = {
-    'can_set_mount_point': False,
-    'can_set_password': False,
+    'can_set_mount_point': {{ dashboard.hyper_features.can_set_mount_point }},
+    'can_set_password': {{ dashboard.hyper_features.can_set_password }},
 }
 
 # The OPENSTACK_NEUTRON_NETWORK settings can be used to enable optional

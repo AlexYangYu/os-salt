@@ -23,6 +23,7 @@ roles:
         - nova-novncproxy
         - nova-scheduler
         - neutron-api
+        - dashboard
     os-ctl:
         - ntp-client
         - ceph-client
@@ -43,6 +44,7 @@ roles:
         - nova-novncproxy
         - nova-scheduler
         - neutron-api
+        - dashboard
     os-cp1: 
         - ntp-client
         - ceph-ctl
