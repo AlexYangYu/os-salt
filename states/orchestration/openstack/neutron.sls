@@ -24,3 +24,15 @@ setup_neutron_l2_agent:
             - openstack.neutron.ovs
         - require:
             - salt: init_neutron_service
+
+setup_neutron_network:
+    salt.state:
+        - tgt: 'roles:neutron-network'
+        - tgt_type: grain
+        - sls:
+            - openstack.neutron.dhcp
+            - openstack.neutron.vpnaas
+            - openstack.neutron.metadata
+            - openstack.neutron.lbaas
+        - require:
+            - salt: init_neutron_service

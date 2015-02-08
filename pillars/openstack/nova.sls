@@ -13,7 +13,7 @@ nova:
         nova_api_port: 18774
         meta_api_port: 18775
         resume_guests_state_on_host_boot: true
-        vcpu_pin_set: 4-$
+        vcpu_pin_set: 4-31
         cpu_allocation_ratio: 4.0
         ram_allocation_ratio: 1.0
         reserved_host_memory_mb: 4096

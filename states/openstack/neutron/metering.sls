@@ -1,19 +1,20 @@
+# vi: set ft=yaml.jinja :
+
 include:
-  - openstack.neutron.configuration
+    - openstack.repo
+    - openstack.neutron.configuration
 
 neutron-metering:
-  pkg.installed:
-    - pkgs:
-      - neutron-metering-agent
-      - openswan
-    - require_in:
-      - file: neutron-conf
-    - require:
-      - cmd: update-apt-index
-  service.running:
-    - name: neutron-metering-agent
-    - enable: True
-    - require:
-      - pkg: neutron-metering
-    - watch:
-      - file: neutron-conf
+    pkg.installed:
+        - pkgs:
+            - neutron-metering-agent
+        - require_in:
+            - file: neutron-conf
+        - refresh: True
+    service.running:
+        - name: neutron-metering-agent
+        - enable: True
+        - require:
+            - pkg: neutron-metering
+        - watch:
+            - file: neutron-conf

@@ -53,11 +53,7 @@ roles:
         - mysql-client
         - rabbitmq-ram
         - nova-compute
-        - neutron-ovs
-        - neutron-dhcp
-        - neutron-metadata
-        - neutron-lbaas
-        - neutron-vpnaas
+        - neutron-network
     os-cp2:
         - ntp-client
         - ceph-mon
@@ -66,11 +62,7 @@ roles:
         - mysql-client
         - rabbitmq-ram
         - nova-compute
-        - neutron-ovs
-        - neutron-dhcp
-        - neutron-metadata
-        - neutron-lbaas
-        - neutron-vpnaas
+        - neutron-network
     os-cp3:
         - ntp-client
         - ceph-mon
@@ -79,8 +71,4 @@ roles:
         - mysql-client
         - rabbitmq-disc
         - nova-compute
-        - neutron-ovs
-        - neutron-dhcp
-        - neutron-metadata
-        - neutron-lbaas
-        - neutron-vpnaas
+        - neutron-network

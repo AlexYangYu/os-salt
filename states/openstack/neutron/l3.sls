@@ -1,28 +1,30 @@
+# vi: set ft=yaml.jinja :
+
 include:
-  - openstack.neutron.configuration
+    - openstack.repo
+    - openstack.neutron.configuration
 
 neutron-l3:
-  pkg.installed:
-    - name: neutron-l3-agent
-    - require_in:
-      - file: neutron-conf
-    - require:
-      - cmd: update-apt-index
-  service.running:
-    - name: neutron-l3-agent
-    - enable: True
-    - require:
-      - pkg: neutron-l3
-    - watch:
-      - file: neutron-conf
+    pkg.installed:
+        - name: neutron-l3-agent
+        - refresh: True
+        - require_in:
+            - file: neutron-conf
+    service.running:
+        - name: neutron-l3-agent
+        - enable: True
+        - require:
+            - pkg: neutron-l3
+        - watch:
+            - file: neutron-conf
 
 sysctl-conf:
-  file.managed:
-    - source: salt://openstack/neutron/etc/60-ip-forwarding.conf 
-    - name: /etc/sysctl.d/60-ip-forwarding.conf
+    file.managed:
+        - source: salt://openstack/neutron/etc/60-ip-forwarding.conf 
+        - name: /etc/sysctl.d/60-ip-forwarding.conf
 
 sysctl-enable:
-  cmd.run:
-    - name: sysctl -p /etc/sysctl.d/60-ip-forwarding.conf
-    - require:
-      - file: /etc/sysctl.d/60-ip-forwarding.conf
+    cmd.run:
+        - name: sysctl -p /etc/sysctl.d/60-ip-forwarding.conf
+        - require:
+            - file: /etc/sysctl.d/60-ip-forwarding.conf
