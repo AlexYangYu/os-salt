@@ -6,3 +6,21 @@ setup_neutron_server:
         - tgt_type: grain
         - sls:
             - openstack.neutron.api
+
+init_neutron_service:
+    salt.state:
+        - tgt: 'roles:openstack-init'
+        - tgt_type: grain
+        - sls:
+            - openstack.neutron.init
+        - require:
+            - salt: setup_neutron_server
+
+setup_neutron_l2_agent:
+    salt.state:
+        - tgt: 'roles:nova-compute'
+        - tgt_type: grain
+        - sls:
+            - openstack.neutron.ovs
+        - require:
+            - salt: init_neutron_service
