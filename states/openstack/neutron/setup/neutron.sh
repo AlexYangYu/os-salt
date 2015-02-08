@@ -1,9 +1,11 @@
 #!/bin/bash - 
 
+{% set script_path = pillar['global']['script_path'] %}
+
 echo "Create Neutron databse" 
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ neutron.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ neutron.database.mysql_db }}.* TO '{{ neutron.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ neutron.database.mysql_pass }}';"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ neutron.database.mysql_db }}.* TO '{{ neutron.database.mysql_user }}'@'%' IDENTIFIED BY '{{ neutron.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "CREATE DATABASE {{ neutron.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ neutron.database.mysql_db }}.* TO '{{ neutron.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ neutron.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ neutron.database.mysql_db }}.* TO '{{ neutron.database.mysql_user }}'@'%' IDENTIFIED BY '{{ neutron.database.mysql_pass }}';"
 
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
@@ -23,5 +25,14 @@ keystone endpoint-create \
 --internalurl={{ endpoints.neutron.admin.protocol }}://{{ endpoints.neutron.admin.host }}:{{ endpoints.neutron.admin.port }} \
 --adminurl={{ endpoints.neutron.admin.protocol }}://{{ endpoints.neutron.admin.host }}:{{ endpoints.neutron.admin.port }}
 
-service neutron-server restart
+neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade juno
+
+#service neutron-server restart
+salt -G 'roles:nova-api' cmd.run "service nova-api restart" 
+salt -G 'roles:nova-scheduler' cmd.run "service nova-scheduler restart" 
+salt -G 'roles:nova-conductor' cmd.run "service nova-conductor restart" 
+salt -G 'roles:neutron-api' cmd.run "service neutron-server restart"
 sleep 5
+
+mkdir -p {{ script_path }}/run
+touch {{ script_path }}/run/neutron.init.lock
