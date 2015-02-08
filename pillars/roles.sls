@@ -22,6 +22,7 @@ roles:
         - nova-consoleauth
         - nova-novncproxy
         - nova-scheduler
+        - neutron-api
     os-ctl:
         - ntp-client
         - ceph-client
@@ -41,6 +42,7 @@ roles:
         - nova-consoleauth
         - nova-novncproxy
         - nova-scheduler
+        - neutron-api
     os-cp1: 
         - ntp-client
         - ceph-ctl
@@ -51,6 +53,11 @@ roles:
         - mysql-client
         - rabbitmq-ram
         - nova-compute
+        - neutron-ovs
+        - neutron-dhcp
+        - neutron-metadata
+        - neutron-lbaas
+        - neutron-vpnaas
     os-cp2:
         - ntp-client
         - ceph-mon
@@ -59,6 +66,11 @@ roles:
         - mysql-client
         - rabbitmq-ram
         - nova-compute
+        - neutron-ovs
+        - neutron-dhcp
+        - neutron-metadata
+        - neutron-lbaas
+        - neutron-vpnaas
     os-cp3:
         - ntp-client
         - ceph-mon
@@ -67,3 +79,8 @@ roles:
         - mysql-client
         - rabbitmq-disc
         - nova-compute
+        - neutron-ovs
+        - neutron-dhcp
+        - neutron-metadata
+        - neutron-lbaas
+        - neutron-vpnaas

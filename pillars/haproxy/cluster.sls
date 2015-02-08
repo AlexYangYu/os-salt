@@ -45,3 +45,8 @@ ha_cluster:
         endpoint: vip-nova-api
         bind_port: 8775
         balance: source
+    neutron_api:
+        role: neutron-api
+        endpoint: vip-neutron-api
+        bind_port: 9696 
+        balance: source
