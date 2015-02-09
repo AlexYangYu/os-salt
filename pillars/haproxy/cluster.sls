@@ -55,3 +55,8 @@ ha_cluster:
         endpoint: vip-dashboard
         bind_port: 8080
         balance: source
+    heat_api:
+        role: heat
+        endpoint: vip-heat-api
+        bind_port: 8004
+        balance: source

@@ -1,15 +1,17 @@
 #!/bin/bash - 
 
+{% set script_path = pillar['global']['script_path'] %}
+
 echo "Create Heat database"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "CREATE DATABASE {{ heat.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ heat.database.mysql_db }}.* TO '{{ heat.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ heat.database.mysql_pass }}';"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ heat.database.mysql_db }}.* TO '{{ heat.database.mysql_user }}'@'%' IDENTIFIED BY '{{ heat.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "CREATE DATABASE {{ heat.database.mysql_db }} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;" 
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ heat.database.mysql_db }}.* TO '{{ heat.database.mysql_user }}'@'localhost' IDENTIFIED BY '{{ heat.database.mysql_pass }}';"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ mysql_admin_user }} -p{{ mysql_admin_pass }} -e "GRANT ALL PRIVILEGES ON {{ heat.database.mysql_db }}.* TO '{{ heat.database.mysql_user }}'@'%' IDENTIFIED BY '{{ heat.database.mysql_pass }}';"
 
 echo "Create Heat database schema"
 heat-manage db_sync
 
 echo "Result"
-mysql -u{{ mysql.admin_user }} -p{{ mysql.admin_pass }} -e "use {{ heat.database.mysql_db }}; show tables;"
+mysql -h{{ mysql_host }} -P{{ mysql_port }} -u{{ heat.database.mysql_user }} -p{{ heat.database.mysql_pass }} -e "use {{ heat.database.mysql_db }}; show tables;"
 
 export OS_SERVICE_TOKEN={{ keystone.default.admin_token }}
 export OS_SERVICE_ENDPOINT={{ endpoints.keystone.admin.protocol }}://{{ endpoints.keystone.admin.host }}:{{ endpoints.keystone.admin.port }}/{{ endpoints.keystone.admin.version }}
@@ -36,7 +38,13 @@ keystone endpoint-create \
 --internalurl={{ endpoints.heat_cfn.admin.protocol }}://{{ endpoints.heat_cfn.admin.host }}:{{ endpoints.heat_cfn.admin.port }}/{{ endpoints.heat_cfn.public.version }} \
 --adminurl={{ endpoints.heat_cfn.admin.protocol }}://{{ endpoints.heat_cfn.admin.host }}:{{ endpoints.heat_cfn.admin.port }}/{{ endpoints.heat_cfn.public.version }}
 
-service heat-api restart
-service heat-api-cfn restart
-service heat-engine restart
+#service heat-api restart
+#service heat-api-cfn restart
+#service heat-engine restart
+salt -G 'roles:heat' cmd.run "service heat-api restart"
+salt -G 'roles:heat' cmd.run "service heat-api-cfn restart"
+salt -G 'roles:heat' cmd.run "service heat-engine restart"
 sleep 5
+
+mkdir -p {{ script_path }}/run
+touch {{ script_path }}/run/heat.init.lock

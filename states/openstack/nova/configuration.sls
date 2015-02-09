@@ -1,4 +1,5 @@
 # vi: set ft=yaml.jinja :
+
 {% set script_path = pillar['global']['script_path'] %}
 
 nova-conf:
