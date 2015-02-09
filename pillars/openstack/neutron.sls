@@ -46,7 +46,7 @@ neutron:
     agent:
         report_interval: 5
     ml2:
-        type_drivers: vxlan,vlan
+        type_drivers: local,flat,vxlan,vlan
         tenant_network_types: vxlan,vlan 
         mechanism_drivers: openvswitch,l2population
         vlan:
