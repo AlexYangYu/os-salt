@@ -24,6 +24,7 @@ roles:
         - nova-scheduler
         - neutron-api
         - dashboard
+        - heat
     os-ctl:
         - ntp-client
         - ceph-client
@@ -45,6 +46,7 @@ roles:
         - nova-scheduler
         - neutron-api
         - dashboard
+        - heat
     os-cp1: 
         - ntp-client
         - ceph-ctl
